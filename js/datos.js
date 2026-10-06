@@ -71,7 +71,9 @@ window.ARBOLES = [
     administra: "CONAF Los Ríos",
     region: "Región de Los Ríos",
     ecosistema: "Bosque templado lluvioso",
-    lat: -39.9500, lng: -72.0333,
+    // Entrada de la reserva: Guardería CONAF, acceso por Enco (OpenStreetMap). El ejemplar se define con CONAF Los Ríos.
+    lat: -39.93856, lng: -72.0976,
+    nota: "Ubicación referencial: entrada de la reserva (guardería CONAF, acceso por Enco). El ejemplar se define con CONAF Los Ríos.",
     foto: "img/coigue.jpg",
     fotoAlt: "Bosque de coigües a orillas de un río de montaña, en Puesco Bajo, Araucanía. Foto referencial de la especie.",
     // CC BY 4.0 exige atribución visible e indicar cambios (la imagen fue recortada).
@@ -96,6 +98,7 @@ window.ARBOLES = [
     administra: "INIA",
     region: "La Pintana, Región Metropolitana",
     ecosistema: "Zona central mediterránea, entorno urbano",
+    nota: "Árbol urbano manejado: su respuesta refleja el clima y el manejo del campus.",
     lat: -33.5833, lng: -70.6333,
     foto: "img/patagua.jpg",
     fotoAlt: "Rama de patagua con flores blancas en forma de campana. Foto referencial de la especie.",

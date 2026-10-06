@@ -159,3 +159,6 @@ main { padding: 24px 0 40px; }
 }
 
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+
+/* Nota contextual de un árbol (p. ej. árbol urbano manejado, ubicación referencial) */
+.nota-arbol { font-size: 0.88rem; color: var(--tierra); background: #fbf3ea; border-left: 3px solid var(--tierra); padding: 6px 10px; border-radius: 0 6px 6px 0; margin: 8px 0; }

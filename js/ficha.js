@@ -50,6 +50,7 @@
         <div><dt>Región</dt><dd>${E(arbol.region)}</dd></div>
         <div><dt>Ecosistema</dt><dd>${E(arbol.ecosistema)}</dd></div>
       </dl>
+      ${arbol.nota ? `<p class="nota-arbol">${E(arbol.nota)}</p>` : ""}
       <p class="bio">${E(arbol.bio)}</p>
       <div class="acciones">
         <a class="boton" href="redes.html?arbol=${encodeURIComponent(arbol.id)}">${window.ICONOS.mensaje} Seguir ${E(al_(arbol))} en redes</a>
