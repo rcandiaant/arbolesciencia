@@ -1,0 +1,93 @@
+/* Árboles Parlantes · maqueta 2027 · Cómo funciona (mobile-first) */
+
+:root {
+  --cf-soporte: #6b5640;
+  --cf-soporte-texto: #4f3d2a;
+  --cf-soporte-fondo: #f1eadc;
+  --cf-dato: #1f5f8b;
+  --cf-dato-texto: #174a6e;
+  --cf-dato-fondo: #e5eef6;
+  --cf-contenido: #2f6b52;
+  --cf-contenido-texto: #1f4d3a;
+  --cf-contenido-fondo: #e2eee4;
+}
+
+.cf-intro { margin-bottom: 24px; }
+.cf-bajada { font-size: 1.08rem; max-width: 62ch; }
+
+#contenido section { margin-top: 36px; }
+.cf-lamina { margin-top: 8px; }
+
+/* Leyenda de capas: color + patrón + borde + nombre */
+.cf-leyenda { list-style: none; margin: 0 0 16px; padding: 0; display: grid; gap: 8px; }
+.cf-leyenda li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.92rem; }
+.cf-leyenda strong { display: block; }
+.cf-leyenda .muestra { flex: none; width: 40px; height: 28px; border-radius: 6px; margin-top: 2px; }
+.capa-soporte .muestra {
+  background: repeating-linear-gradient(45deg, var(--cf-soporte-fondo), var(--cf-soporte-fondo) 5px, #dccfb5 5px, #dccfb5 8px);
+  border: 2px solid var(--cf-soporte);
+}
+.capa-dato .muestra {
+  background: radial-gradient(circle, #9fbdd6 1.6px, transparent 1.8px) 0 0 / 9px 9px, var(--cf-dato-fondo);
+  border: 2px dashed var(--cf-dato);
+}
+.capa-contenido .muestra { background: var(--cf-contenido-fondo); border: 4px solid var(--cf-contenido); }
+.cf-leyenda .capa-soporte strong { color: var(--cf-soporte-texto); }
+.cf-leyenda .capa-dato strong { color: var(--cf-dato-texto); }
+.cf-leyenda .capa-contenido strong { color: var(--cf-contenido-texto); }
+@media (min-width: 900px) { .cf-leyenda { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
+
+/* Lámina: vertical en móvil, horizontal desde 900 px */
+.cf-figura { margin: 0; }
+.cf-figura figcaption { margin-top: 10px; }
+.lamina { width: 100%; height: auto; }
+.lamina-h { display: none; }
+.lamina-v { max-width: 480px; margin: 0 auto; }
+@media (min-width: 900px) {
+  .lamina-h { display: block; }
+  .lamina-v { display: none; }
+}
+
+.cf-lista { margin-top: 16px; background: var(--blanco); border: 1px solid var(--borde); border-radius: var(--radio); padding: 4px 16px; }
+.cf-lista summary { cursor: pointer; font-weight: 600; color: var(--bosque); min-height: 44px; display: flex; align-items: center; }
+.cf-lista ol { padding-left: 1.3em; margin: 4px 0 12px; }
+.cf-lista li { margin-bottom: 6px; }
+
+/* Tarjetas por capa */
+.cf-capa { border-top-width: 6px; }
+.cf-capa.capa-soporte { border-top: 6px solid var(--cf-soporte); }
+.cf-capa.capa-dato { border-top: 6px dashed var(--cf-dato); }
+.cf-capa.capa-contenido { border-top: 6px double var(--cf-contenido); border-top-width: 8px; }
+.cf-capa-rotulo, .cf-paso-rotulo {
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin: 0 0 4px;
+}
+.capa-soporte .cf-capa-rotulo, .capa-soporte h3 { color: var(--cf-soporte-texto); }
+.capa-dato .cf-capa-rotulo, .capa-dato h3 { color: var(--cf-dato-texto); }
+.capa-contenido .cf-capa-rotulo, .capa-contenido h3 { color: var(--cf-contenido-texto); }
+
+/* Ejemplo en tres columnas: dato → qué significa → mensaje */
+.cf-tres { list-style: none; margin: 0; padding: 0; display: grid; gap: 36px; }
+.cf-paso { position: relative; }
+.cf-paso.con-sello { padding-top: 44px; }
+.cf-paso-rotulo { color: var(--tinta-2); }
+.cf-paso + .cf-paso::before {
+  content: "↓"; position: absolute; left: 50%; top: -32px; transform: translateX(-50%);
+  font-size: 1.5rem; line-height: 1; color: var(--tinta-2);
+}
+.cf-curva { width: 100%; max-width: 320px; margin: 4px 0 12px; }
+.cf-post { border-left: 4px solid var(--cf-contenido); }
+.cf-post-autor { margin-bottom: 6px; }
+.cf-post-texto { font-size: 1.02rem; }
+.cf-post-revision { font-size: 0.85rem; font-weight: 600; color: var(--tierra); }
+@media (min-width: 900px) {
+  .cf-tres { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .cf-paso + .cf-paso::before { content: "→"; left: -26px; top: 50%; transform: translateY(-50%); }
+  .cf-paso.con-sello { padding-top: 48px; }
+}
+
+/* Origen de la instrumentación */
+.cf-origen-cuerpo { display: grid; gap: 16px; }
+.cf-foto-nodo { aspect-ratio: auto; min-height: 160px; }
+.cf-foto-nodo p { margin: 0; }
+.cf-foto-nodo .pendiente { white-space: normal; }
+@media (min-width: 700px) { .cf-origen-cuerpo { grid-template-columns: 3fr 2fr; align-items: start; } }

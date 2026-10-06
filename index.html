@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Árboles Parlantes · Maqueta 2027 · Qué es y cómo recorrerla</title>
+  <link rel="icon" href="img/favicon.ico">
+  <link rel="stylesheet" href="css/maqueta.css">
+  <link rel="stylesheet" href="css/paginas-intro.css">
+</head>
+<body>
+  <main id="contenido">
+    <div class="contenedor">
+
+      <section class="portada" aria-labelledby="titulo-proyecto">
+        <p class="antetitulo">Maqueta · Concurso Ciencia Pública – Dispositivos 2027</p>
+        <h1 id="titulo-proyecto">Árboles Parlantes</h1>
+        <p class="frase-dispositivo" id="frase-dispositivo"></p>
+      </section>
+
+      <section class="seccion" aria-labelledby="titulo-componentes">
+        <h2 id="titulo-componentes">Tres elementos, una sola experiencia</h2>
+        <p class="seccion-intro">Las cuentas de los árboles son el centro del dispositivo. La plataforma web da profundidad a cada mensaje y el panel en terreno conecta el árbol físico con su cuenta.</p>
+        <ul class="componentes" id="componentes"></ul>
+      </section>
+
+      <section class="seccion" id="arboles" aria-labelledby="titulo-arboles">
+        <h2 id="titulo-arboles">Los tres árboles de la red</h2>
+        <p class="seccion-intro">Tres individuos de especies nativas en tres territorios distintos: desierto de Tarapacá, zona central y bosque templado de Los Ríos.</p>
+        <ul class="arboles-lista rejilla tres" id="arboles-lista"></ul>
+        <div class="aviso-codiseno">
+          <p><strong>Nombres y voz en construcción.</strong> Los nombres y la voz definitiva de cada árbol se construyen en talleres de co-diseño con las comunidades. Los nombres de cuenta que aparecen en esta maqueta son de ejemplo.</p>
+        </div>
+      </section>
+
+      <section class="seccion" aria-labelledby="titulo-recorrer">
+        <h2 id="titulo-recorrer">Cómo recorrer esta maqueta</h2>
+        <p class="seccion-intro">Orden de lectura sugerido. Cada paso tiene botones de anterior y siguiente al final de la página, y la barra superior muestra en qué paso va.</p>
+        <ol class="recorrido-lectura" id="recorrido-lectura"></ol>
+
+        <h3 class="seccion">Cómo leer los sellos</h3>
+        <div class="sellos-explicacion">
+          <div class="tarjeta">
+            <span id="ejemplo-sello-demo"></span>
+            <p>Valor simulado para mostrar cómo se verá el dispositivo. No corresponde a una medición ni a una cifra publicada. Cada gráfico, tarjeta o mensaje con datos simulados lleva este sello.</p>
+          </div>
+          <div class="tarjeta">
+            <span id="ejemplo-sello-real"></span>
+            <p>Valor medido por los sensores de un árbol u obtenido de una fuente científica citada, como la serie climática CR2MET.</p>
+          </div>
+        </div>
+        <p class="nota" id="nota-clima"></p>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="js/datos.js"></script>
+  <script src="js/clima.js"></script>
+  <script src="js/comun.js"></script>
+  <script>
+    (function () {
+      var esc = AP.escapar;
+
+      // Título: nombre exacto del proyecto, separado visualmente en marca y resto.
+      var nombre = window.NOMBRE_PROYECTO;
+      var corte = nombre.indexOf(":");
+      document.getElementById("titulo-proyecto").innerHTML = corte > 0
+        ? '<span class="titulo-marca">' + esc(nombre.slice(0, corte + 1)) + '</span> <span class="titulo-resto">' + esc(nombre.slice(corte + 1).trim()) + '</span>'
+        : esc(nombre);
+      document.getElementById("frase-dispositivo").textContent = window.FRASE_DISPOSITIVO;
+
+      // Componentes
+      var iconos = { cuentas: ICONOS.mensaje, plataforma: ICONOS.ficha, panel: ICONOS.qr };
+      var destino = {
+        cuentas: { href: "redes.html", texto: "Ver las cuentas" },
+        plataforma: { href: "arbol.html", texto: "Ver una ficha" },
+        panel: { href: "panel.html", texto: "Ver el panel" }
+      };
+      document.getElementById("componentes").innerHTML = window.COMPONENTES.map(function (c, i) {
+        var d = destino[c.id];
+        return '<li class="tarjeta componente' + (c.id === "cuentas" ? " central" : "") + '">' +
+          '<span class="icono">' + (iconos[c.id] || "") + '</span>' +
+          '<span class="rol">' + (i + 1) + '. ' + esc(c.rol) + '</span>' +
+          '<h3>' + esc(c.titulo) + '</h3>' +
+          '<p>' + esc(c.texto) + '</p>' +
+          (d ? '<p class="ir"><a href="' + d.href + '">' + esc(d.texto) + '<span class="visualmente-oculto">: ' + esc(c.titulo) + '</span> →</a></p>' : '') +
+          '</li>';
+      }).join("");
+
+      // Árboles
+      document.getElementById("arboles-lista").innerHTML = window.ARBOLES.map(function (a) {
+        var foto = a.foto
+          ? '<img class="foto-arbol" src="' + esc(a.foto) + '" alt="' + esc(a.fotoAlt) + '" loading="lazy">' + AP.creditoFoto(a)
+          : '<div class="placeholder-foto foto-arbol" role="img" aria-label="Foto del ' + esc(a.comun.toLowerCase()) + ' pendiente">Foto del ' + esc(a.comun.toLowerCase()) + ' – pendiente</div>';
+        return '<li><article class="tarjeta arbol-tarjeta">' +
+          '<div class="franja-color" style="background:' + esc(a.color) + '" aria-hidden="true"></div>' +
+          foto +
+          '<div class="cuerpo">' +
+            '<h3>' + esc(a.comun) + '</h3>' +
+            '<p class="especie"><em>' + esc(a.especie) + '</em></p>' +
+            '<p class="lugar">' + esc(a.lugar) + '</p>' +
+            '<p class="region">' + esc(a.region) + '</p>' +
+            '<p class="handle handle-ejemplo">' + esc(a.handle) + '</p>' +
+            '<a class="boton secundario" href="arbol.html?arbol=' + encodeURIComponent(a.id) + '">Ver ficha<span class="visualmente-oculto"> de ' + esc(a.comun) + '</span></a>' +
+          '</div></article></li>';
+      }).join("");
+
+      // Recorrido de lectura
+      var lineas = {
+        "index.html": "Esta portada: qué es el dispositivo, sus tres elementos y sus tres árboles.",
+        "panel.html": "El panel que se instala junto a cada árbol, con su código QR.",
+        "acceso.html": "La pantalla que aparece en el celular al escanear el QR del panel: seguir la cuenta o entrar a la ficha.",
+        "arbol.html": "La plataforma web: mapa, variables que miden los sensores y cuántos días como hoy había antes según la serie climática CR2MET.",
+        "redes.html": "Cómo se ven las cuentas de los árboles en Instagram y X, y cómo conversan entre ellos.",
+        "repositorio.html": "Qué hay detrás de cada mensaje: explicación del fenómeno, cápsula audiovisual y fuente científica.",
+        "como-funciona.html": "El camino del dato: del sensor al mensaje que el equipo revisa antes de publicarlo."
+      };
+      document.getElementById("recorrido-lectura").innerHTML = window.PASOS.map(function (p, i) {
+        return '<li' + (i === 0 ? ' class="actual"' : '') + '>' +
+          '<a href="' + AP.enlace(p.archivo) + '"' + (i === 0 ? ' aria-current="page"' : '') + '>' + esc(p.titulo) + '</a>' +
+          '<p>' + esc(lineas[p.archivo] || "") + '</p></li>';
+      }).join("");
+
+      // Sellos
+      document.getElementById("ejemplo-sello-demo").innerHTML = AP.selloDemo("Dato de demostración");
+      document.getElementById("ejemplo-sello-real").innerHTML = AP.selloReal("Dato real");
+      document.getElementById("nota-clima").textContent = window.CLIMA.real
+        ? "Las cifras de la serie climática de esta maqueta provienen de CR2MET. Las cuentas y sus nombres son de ejemplo."
+        : "En esta versión de la maqueta, las cifras de los sensores y de la serie climática son de demostración. Las cuentas y sus nombres también son de ejemplo.";
+
+      AP.montar();
+    })();
+  </script>
+</body>
+</html>

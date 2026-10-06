@@ -1,0 +1,96 @@
+/* Árboles Parlantes · maqueta 2027 · repositorio.html */
+
+.intro { font-size: 1.05rem; }
+
+/* Diagrama de los 4 niveles: vertical en móvil, horizontal desde 760px */
+.niveles-diagrama { margin: 24px 0 32px; }
+.diagrama { list-style: none; margin: 0; padding: 0; display: grid; gap: 28px; }
+.diagrama li {
+  position: relative; display: flex; flex-direction: column; gap: 2px;
+  background: var(--blanco); border: 2px solid var(--bosque-2); border-radius: var(--radio);
+  padding: 12px 14px 12px 60px; min-height: 64px;
+}
+.diagrama li strong { color: var(--bosque); font-size: 1.05rem; }
+.diagrama li span:last-child { font-size: 0.9rem; color: var(--tinta-2); }
+.diagrama-num {
+  position: absolute; left: 12px; top: 12px; width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bosque); color: var(--blanco); font-weight: 700;
+}
+.diagrama li:not(:last-child)::after {
+  content: "↓"; position: absolute; left: 50%; bottom: -26px; transform: translateX(-50%);
+  font-size: 1.3rem; line-height: 1; color: var(--bosque-2); font-weight: 700;
+}
+@media (min-width: 760px) {
+  .diagrama { grid-template-columns: repeat(4, 1fr); gap: 28px; }
+  .diagrama li { padding: 52px 14px 14px; }
+  .diagrama li:not(:last-child)::after { content: "→"; left: auto; right: -24px; top: 50%; bottom: auto; transform: translateY(-50%); }
+}
+.diagrama-pie { margin: 12px 0 0; font-weight: 700; color: var(--bosque); }
+
+.indice-temas ul { margin: 0; padding-left: 1.2em; }
+.indice-temas li a { display: inline-block; padding: 10px 0; min-height: 44px; }
+
+/* Temas */
+.tema { margin-top: 40px; padding-top: 24px; border-top: 2px solid var(--borde); scroll-margin-top: 8px; }
+
+.nivel { background: var(--blanco); border: 1px solid var(--borde); border-radius: var(--radio); margin-top: 12px; }
+.nivel > summary {
+  display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 8px 14px; cursor: pointer;
+  font-weight: 700; color: var(--bosque); list-style: none;
+}
+.nivel > summary::-webkit-details-marker { display: none; }
+.nivel > summary::after { content: "+"; margin-left: auto; font-size: 1.3rem; line-height: 1; }
+.nivel[open] > summary::after { content: "−"; }
+.nivel > summary:hover { background: var(--arena); border-radius: var(--radio); }
+.nivel-num {
+  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em;
+  background: var(--hoja); color: var(--bosque); border-radius: 999px; padding: 2px 8px;
+}
+.nivel > div { padding: 4px 14px 14px; }
+@media (min-width: 700px) { .nivel > div { padding: 4px 20px 18px; } }
+.nivel-cuerpo { max-width: 72ch; }
+
+/* Mensaje de ejemplo */
+.mensaje { margin: 0; border-left: 5px solid var(--bosque-2); background: var(--arena); border-radius: 8px; padding: 12px 14px; }
+.mensaje.tono-tamarugo { border-left-color: #7a3f0d; }
+.mensaje.tono-coigue { border-left-color: #1f4d3a; }
+.mensaje.tono-patagua { border-left-color: #5a3469; }
+.mensaje-autor { overflow-wrap: anywhere; }
+.mensaje-dia { margin: 2px 0 6px; font-size: 0.85rem; font-weight: 700; color: var(--tinta-2); }
+.mensaje-texto { margin: 0 0 8px; font-family: var(--fuente-titulo); font-size: 1.1rem; }
+.mensaje-texto p { margin: 0; }
+
+.pasos-metodo { padding-left: 1.3em; }
+.pasos-metodo li { margin-bottom: 6px; }
+
+/* Cápsula (placeholder) */
+.capsula-pantalla {
+  display: flex; align-items: center; justify-content: center; text-align: center; aspect-ratio: 16 / 9; max-width: 560px;
+  background: repeating-linear-gradient(45deg, var(--arena-2), var(--arena-2) 12px, var(--arena) 12px, var(--arena) 24px);
+  border: 2px dashed var(--borde); border-radius: var(--radio); padding: 16px;
+}
+.capsula-estado { margin: 0; color: var(--tierra); font-weight: 700; }
+.capsula-accesibilidad { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.capsula-accesibilidad li {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 6px 12px;
+  border: 1px solid var(--borde); border-radius: 999px; background: var(--arena); font-size: 0.9rem;
+}
+.capsula-accesibilidad svg { width: 24px; height: 24px; color: var(--bosque); flex: none; }
+
+.fuente { overflow-wrap: anywhere; }
+.fuente a { display: inline-block; padding: 10px 0; min-height: 44px; }
+
+/* Tabla de días sobre umbral */
+.tabla-clima { margin-top: 16px; border: 1px solid var(--borde); border-radius: 10px; padding: 12px; background: var(--arena); }
+.tabla-clima-cabecera { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 8px; }
+.tabla-clima-cabecera h3 { margin: 0; font-size: 1rem; }
+.tabla-envoltura { overflow-x: auto; }
+.tabla-clima table { width: 100%; border-collapse: collapse; background: var(--blanco); font-size: 0.95rem; }
+.tabla-clima th, .tabla-clima td { padding: 8px 10px; border-bottom: 1px solid var(--borde); text-align: left; }
+.tabla-clima thead th { color: var(--bosque); }
+.tabla-clima .nota { margin: 8px 0 0; }
+
+.origen { margin-top: 48px; }
+.origen ul { padding-left: 1.2em; }
+.origen li { margin-bottom: 8px; }

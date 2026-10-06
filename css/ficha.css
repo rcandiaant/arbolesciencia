@@ -1,0 +1,156 @@
+/* Árboles Parlantes · maqueta 2027 · ficha del árbol (mobile-first) */
+
+.contexto-plataforma {
+  background: var(--hoja); border-radius: var(--radio); padding: 12px 16px; font-size: 0.95rem;
+}
+
+/* ---------- Selector de árbol ---------- */
+.selector-arbol { margin: 0 0 20px; }
+.selector-titulo { font-size: 0.9rem; color: var(--tinta-2); margin: 0 0 6px; }
+.selector-arbol ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.selector-arbol a {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 16px;
+  border: 2px solid var(--borde); border-radius: 999px; background: var(--blanco);
+  color: var(--tinta); text-decoration: none; font-weight: 600;
+}
+.selector-arbol a:hover { border-color: var(--bosque-2); color: var(--bosque); }
+.selector-arbol a[aria-current="page"] { border-color: var(--bosque); background: var(--bosque); color: var(--blanco); }
+.selector-arbol a[aria-current="page"]::after { content: "· esta ficha"; font-weight: 400; font-size: 0.85rem; }
+
+.punto { display: inline-block; width: 12px; height: 12px; border-radius: 50%; flex: none; border: 1px solid rgba(0,0,0,0.25); }
+.punto.grande { width: 40px; height: 40px; }
+
+/* ---------- Encabezado ---------- */
+.encabezado-arbol { display: grid; gap: 20px; }
+.foto-arbol { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radio); }
+.antetitulo { font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--tierra); font-weight: 700; margin: 0 0 4px; }
+.encabezado-texto h1 { margin-bottom: 0.15em; }
+.especie { font-size: 1.1rem; color: var(--tinta-2); margin: 0 0 4px; }
+.encabezado-texto .handle { margin: 0 0 12px; }
+.datos-arbol { margin: 0 0 12px; display: grid; gap: 6px; }
+.datos-arbol div { display: grid; gap: 0; }
+.datos-arbol dt { font-size: 0.8rem; color: var(--tinta-2); font-weight: 600; }
+.datos-arbol dd { margin: 0; }
+.bio { font-style: italic; border-left: 3px solid var(--bosque-2); padding-left: 12px; }
+.acciones { display: flex; flex-wrap: wrap; gap: 10px; }
+.acciones .boton { flex: 1 1 220px; }
+
+@media (min-width: 560px) {
+  .datos-arbol { grid-template-columns: 1fr 1fr; column-gap: 16px; }
+}
+@media (min-width: 860px) {
+  .encabezado-arbol { grid-template-columns: 5fr 6fr; align-items: start; }
+}
+
+/* ---------- Secciones ---------- */
+.seccion-ficha { margin-top: 40px; }
+
+/* ---------- Mapa ---------- */
+.mapa {
+  height: 320px; border-radius: var(--radio); border: 1px solid var(--borde);
+  background: var(--arena-2); z-index: 0;
+}
+@media (min-width: 860px) { .mapa { height: 420px; } }
+.mapa-ayuda { margin: 8px 0 0; }
+.mapa-aviso:empty { display: none; }
+.mapa-aviso { margin: 8px 0 0; color: var(--tierra); font-weight: 600; }
+.leaflet-container a { color: var(--bosque-2); }
+.leaflet-container { font: inherit; font-size: 0.9rem; }
+.leaflet-touch .leaflet-bar a { width: 44px; height: 44px; line-height: 44px; }
+
+.titulo-lista-lugares { margin-top: 16px; }
+.lista-lugares { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.lista-lugares li {
+  display: flex; gap: 10px; align-items: flex-start; background: var(--blanco);
+  border: 1px solid var(--borde); border-radius: 10px; padding: 10px 12px; font-size: 0.92rem;
+}
+.lista-lugares li .punto { margin-top: 5px; }
+.lista-lugares li.actual { border: 2px solid var(--bosque); }
+.lista-lugares a { display: inline-block; padding: 10px 0; }
+.esta-ficha { color: var(--tinta-2); font-size: 0.85rem; }
+.coord { font-variant-numeric: tabular-nums; color: var(--tinta-2); }
+@media (min-width: 760px) { .lista-lugares { grid-template-columns: repeat(3, 1fr); } }
+
+/* ---------- Tarjetas de variables ---------- */
+.tarjetas-variables { list-style: none; margin: 0 0 20px; padding: 0; display: grid; gap: 12px; grid-template-columns: 1fr; }
+@media (min-width: 560px) { .tarjetas-variables { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 960px) { .tarjetas-variables { grid-template-columns: repeat(5, 1fr); } }
+.tarjeta-variable { display: flex; flex-direction: column; gap: 6px; padding: 14px; }
+@media (min-width: 700px) { .tarjeta-variable { padding: 16px; } }
+.tarjeta-variable .sello-demo { align-self: flex-start; }
+.tarjeta-variable h3 { font-size: 1rem; margin: 0; }
+.tarjeta-variable .valor { margin: 0; font-variant-numeric: tabular-nums; }
+.tarjeta-variable .cifra { font-size: 1.9rem; font-weight: 700; color: var(--tinta); }
+.tarjeta-variable .unidad { color: var(--tinta-2); font-weight: 600; }
+.tarjeta-variable .nota { margin: 0; font-size: 0.85rem; }
+
+/* ---------- Gráficos ---------- */
+.figura-grafico { margin: 0; }
+.cabeza-grafico { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.cabeza-grafico h3 { margin: 0; }
+.grafico { width: 100%; min-height: 200px; }
+.grafico svg { width: 100%; height: auto; overflow: visible; }
+.grafico text { font-family: var(--fuente); font-size: 12px; fill: var(--tinta-2); }
+.grafico .unidad-eje { font-size: 12.5px; font-weight: 700; fill: var(--tinta); }
+.grafico .rejilla-y { stroke: #e7e0d0; }
+.grafico .division-dia { stroke: #cfc6b2; stroke-dasharray: 3 3; }
+.grafico .linea-base { stroke: var(--tinta-2); }
+.grafico .barra { fill: #74807a; }
+.grafico .barra.base { fill: var(--bosque-2); }
+.grafico .barra.reciente { fill: var(--tierra); }
+.grafico .valor { font-weight: 700; fill: var(--tinta); paint-order: stroke; stroke: #fff; stroke-width: 4px; stroke-linejoin: round; }
+.grafico .decada { fill: var(--tinta); }
+.grafico .promedio-base { stroke: var(--bosque); stroke-width: 2; stroke-dasharray: 6 4; }
+
+.selector-variable { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 12px; }
+.selector-variable .opcion {
+  min-height: 44px; padding: 8px 14px; border-radius: 999px; border: 2px solid var(--bosque-2);
+  background: var(--blanco); color: var(--bosque); font: inherit; font-size: 0.9rem; font-weight: 600; cursor: pointer;
+}
+.selector-variable .opcion:hover { background: var(--hoja); }
+.selector-variable .opcion[aria-pressed="true"] { background: var(--bosque); border-color: var(--bosque); color: var(--blanco); }
+
+.ver-tabla { margin-top: 12px; }
+.ver-tabla summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; color: var(--bosque-2); font-weight: 600; }
+.ver-tabla table { width: 100%; border-collapse: collapse; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+.ver-tabla caption { text-align: left; font-size: 0.85rem; color: var(--tinta-2); padding-bottom: 6px; }
+.ver-tabla th, .ver-tabla td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--borde); }
+.ver-tabla td { text-align: right; }
+
+/* ---------- Módulo clima ---------- */
+.modulo-clima { display: grid; gap: 16px; }
+.frase-clima { font-size: 1.05rem; background: var(--arena); border-radius: 8px; padding: 10px 12px; }
+.leyenda { list-style: none; margin: 8px 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.88rem; }
+.leyenda li { display: flex; align-items: center; gap: 8px; }
+.muestra { display: inline-block; width: 18px; height: 12px; border-radius: 2px; flex: none; }
+.muestra.base { background: var(--bosque-2); }
+.muestra.reciente { background: var(--tierra); }
+.muestra.linea-promedio { height: 0; border-top: 2px dashed var(--bosque); border-radius: 0; }
+.nota-incompleta { color: var(--tierra); }
+
+.como-se-calcula {
+  background: var(--blanco); border: 2px solid var(--bosque-2); border-radius: var(--radio); padding: 16px;
+}
+@media (min-width: 700px) { .como-se-calcula { padding: 24px; } }
+.como-se-calcula ol { padding-left: 1.3em; margin: 0 0 1em; }
+.como-se-calcula li { margin-bottom: 0.5em; }
+.como-se-calcula .fuente { font-size: 0.9rem; color: var(--tinta-2); overflow-wrap: anywhere; }
+.enlaces-tema { display: flex; flex-direction: column; gap: 4px; margin: 0; }
+.enlaces-tema a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; }
+
+@media (min-width: 960px) {
+  .modulo-clima { grid-template-columns: 3fr 2fr; align-items: start; }
+}
+
+/* ---------- Publicaciones ---------- */
+.lista-publicaciones { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+@media (min-width: 760px) { .lista-publicaciones { grid-template-columns: 1fr 1fr; } }
+.publicacion { height: 100%; display: flex; flex-direction: column; }
+.publicacion-cabeza { display: flex; align-items: center; gap: 10px; }
+.publicacion-cabeza p { margin: 0; }
+.publicacion-autor .handle { display: block; }
+.publicacion-dia { font-size: 0.85rem; color: var(--tinta-2); }
+.publicacion-sello { margin: 10px 0 6px; }
+.publicacion-texto { font-size: 1.02rem; }
+.publicacion-enlace { margin: auto 0 0; }
+.publicacion-enlace a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; }
