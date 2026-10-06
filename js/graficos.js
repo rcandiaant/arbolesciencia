@@ -170,10 +170,17 @@ window.GRAFICOS = (function () {
     if (typeof d.anios === "number") return `${d.anios} ${d.anios === 1 ? "año" : "años"}`;
     return "";
   }
+  // Acepta "1960s" (década de calendario) o "1961–1970" (década que parte en 1961).
   function etiquetaDecada(etq, corta) {
+    const p = anios(etq);
+    if (p) return corta ? `${String(p[0]).slice(2)}–${String(p[1]).slice(2)}` : `${p[0]}–${String(p[1]).slice(2)}`;
     const s = inicioDecada(etq);
     if (s == null) return String(etq);
     return corta ? String(s) : `${s}–${String(s + 9).slice(2)}`;
+  }
+  // Solo décadas completas: la serie CR2MET v2.5 termina en 2021, así que 2020–29 no se muestra.
+  function decadasCompletas(c) {
+    return (c.decadas || []).filter(d => !incompleta(d));
   }
 
   function barras(cont, c, opc) {
@@ -181,7 +188,7 @@ window.GRAFICOS = (function () {
     const estrecho = ancho < 520;
     const alto = estrecho ? 270 : 320;
     const m = { top: 30, right: 12, bottom: 40, left: 44 };
-    const datos = c.decadas || [];
+    const datos = decadasCompletas(c);
 
     const svg = crearSvg(cont, ancho, alto).attr("aria-label", opc.resumen);
     const x = d3.scaleBand().domain(datos.map(d => d.decada)).range([m.left, ancho - m.right]).padding(0.22);
@@ -238,5 +245,5 @@ window.GRAFICOS = (function () {
 
   }
 
-  return { serie, resumenDiario, linea, barras, incompleta, textoAnios, etiquetaDecada, dentro, num, numFlex, DECIMALES, ETIQUETAS_DIA };
+  return { serie, resumenDiario, linea, barras, incompleta, decadasCompletas, textoAnios, etiquetaDecada, dentro, num, numFlex, DECIMALES, ETIQUETAS_DIA };
 })();

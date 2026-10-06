@@ -188,7 +188,7 @@
 
   function dibujarBarras() {
     if (!hayD3 || !c) return;
-    const decs = c.decadas || [];
+    const decs = G.decadasCompletas(c);
     const resumen = `Gráfico de barras${C.real ? "" : " con dato de demostración"}: días al año con temperatura máxima sobre ${G.numFlex(c.umbral)} °C ` +
       `en la celda CR2MET más cercana ${al_(arbol)}, por década. ` +
       decs.map(d => `${G.etiquetaDecada(d.decada, false)}: ${G.numFlex(d.dias)}`).join("; ") + ".";
@@ -201,7 +201,7 @@
       cont.innerHTML = `<p class="nota">No hay datos climáticos para este árbol.</p>`;
       return;
     }
-    const decs = c.decadas || [];
+    const decs = G.decadasCompletas(c);
     const incompletas = decs.filter(G.incompleta);
     const notaIncompleta = incompletas.length
       ? `<p class="nota nota-incompleta">* ${incompletas.map(d => {
