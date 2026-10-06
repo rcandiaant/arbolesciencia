@@ -8,7 +8,8 @@
   const FUENTES = {
     garrido: {
       cita: "Garrido M. et al. (2020). The adjustment of Prosopis tamarugo hydraulic architecture traits has a homeostatic effect over its performance under descent of phreatic level in the Atacama Desert. Trees 34:89–99.",
-      url: "https://doi.org/10.1007/s00468-019-01899-2"
+      url: "https://doi.org/10.1007/s00468-019-01899-2",
+      accesoAbierto: "https://repositorio.uchile.cl/handle/2250/174762"
     },
     cr2met: {
       cita: "Boisier J. P. (2023). CR2MET v2.5. Zenodo.",
@@ -54,7 +55,8 @@
   document.querySelectorAll("[data-fuente]").forEach(c => {
     const f = FUENTES[c.dataset.fuente];
     if (!f) return;
-    c.innerHTML = `<p class="fuente">${esc(f.cita)} <a href="${esc(f.url)}" rel="noopener">${esc(f.url)}</a></p>`;
+    c.innerHTML = `<p class="fuente">${esc(f.cita)} <a href="${esc(f.url)}" rel="noopener">${esc(f.url)}</a></p>` +
+      (f.accesoAbierto ? `<p class="fuente fuente-abierta">Acceso abierto: <a href="${esc(f.accesoAbierto)}" rel="noopener">${esc(f.accesoAbierto)}</a></p>` : "");
   });
 
   // Tabla de comparación por árbol (CR2MET contra CR2MET), con sello en el mismo elemento
