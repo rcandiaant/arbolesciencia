@@ -7,7 +7,7 @@ window.NOMBRE_PROYECTO = "ÁRBOLES PARLANTES: una red social de árboles nativos
 // Frase del 2.1 (debe ser idéntica en todos los lugares donde aparece)
 window.FRASE_DISPOSITIVO = "Árboles Parlantes es una red social de árboles nativos sensorizados: un dispositivo multiplataforma y gratuito con tres elementos que funcionan como una sola experiencia.";
 
-window.MENCION_IA = "Mensaje generado a partir de datos reales con apoyo de un modelo de lenguaje y revisado por el equipo científico.";
+window.MENCION_IA = "En el dispositivo, cada mensaje se genera a partir de datos reales con apoyo de un modelo de lenguaje y lo revisa el equipo científico.";
 
 window.COMPONENTES = [
   { id: "cuentas", titulo: "Cuentas de los árboles en Instagram y X", rol: "Componente central",
