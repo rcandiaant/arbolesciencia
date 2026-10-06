@@ -41,7 +41,7 @@
   const I = window.ICONOS;
   document.querySelectorAll("[data-capsula]").forEach(c => {
     c.innerHTML = `<div class="capsula-pantalla">
-        <p class="capsula-estado">Cápsula audiovisual – en producción</p>
+        <p class="capsula-estado">Cápsulas en producción</p>
       </div>
       <ul class="capsula-accesibilidad" aria-label="Accesibilidad de la cápsula">
         <li>${I.lenguaSenas}<span>Lengua de señas</span></li>

@@ -94,3 +94,9 @@
 .origen { margin-top: 48px; }
 .origen ul { padding-left: 1.2em; }
 .origen li { margin-bottom: 8px; }
+
+/* Una sola tarjeta de cápsulas; en cada tema, el nivel 3 enlaza a ella */
+.capsulas-tarjeta { margin: 24px 0; }
+.capsulas-tarjeta .capsula { margin-top: 12px; max-width: 520px; }
+.nivel-enlace { padding: 10px 14px; margin: 8px 0; border: 1px dashed var(--borde); border-radius: 8px; background: var(--blanco); }
+.nivel-enlace a { display: inline-block; padding: 4px 0; }
