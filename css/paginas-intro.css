@@ -172,3 +172,19 @@
 /* Atribución de fotos con licencia bajo imágenes a sangre */
 .arbol-tarjeta .credito-foto, .pantalla .credito-foto { padding: 0 16px; }
 .letrero-presentacion .credito-foto { max-width: 160px; font-size: 0.7rem; }
+
+/* Panel 2027: título en relieve, URL corta y audio */
+.marca-relieve { display: inline-flex; align-items: center; gap: 6px; margin: 0 0 6px; font-size: 0.78rem; font-weight: 700; color: var(--bosque); background: var(--hoja); border-radius: 999px; padding: 2px 10px; }
+.marca-relieve svg { width: 16px; height: 16px; }
+.qr-columna { display: grid; gap: 8px; justify-items: start; width: 150px; }
+.url-corta { margin: 0; text-align: center; width: 150px; }
+.url-texto { display: block; font-family: ui-monospace, Consolas, monospace; font-size: 0.85rem; font-weight: 700; color: var(--tinta); }
+.url-rotulo { display: block; font-size: 0.72rem; font-weight: 700; color: var(--tierra); }
+.escuchalo { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 150px; min-height: 44px; border: 2px solid var(--bosque); border-radius: 10px; color: var(--bosque); font-weight: 700; text-decoration: none; background: var(--blanco); }
+.escuchalo:hover { background: var(--hoja); }
+.escuchalo svg { width: 22px; height: 22px; }
+/* Acceso: audio en producción */
+.audio-acceso { margin-top: 10px; }
+.audio-acceso .boton { width: 100%; min-height: 56px; justify-content: flex-start; padding-left: 20px; font-size: 1.05rem; }
+.audio-acceso .boton svg { width: 24px; height: 24px; }
+.audio-nota { margin: 6px 0 0; font-size: 0.85rem; }

@@ -54,6 +54,10 @@
             '<li><a class="boton bloque" href="redes.html?arbol=' + id + '#x">' + ICONOS.mensaje + 'Seguir en X</a></li>' +
             '<li><a class="boton bloque secundario" href="arbol.html?arbol=' + id + '">' + ICONOS.ficha + 'Ver mi ficha</a></li>' +
           '</ul>' +
+          '<div class="audio-acceso" id="audio">' +
+            '<button type="button" class="boton bloque secundario" id="boton-audio" aria-describedby="audio-nota" aria-expanded="false" aria-controls="audio-nota">' + ICONOS.audiodescripcion + 'Escuchar al ' + esc(a.comun.toLowerCase()) + '</button>' +
+            '<p class="audio-nota" id="audio-nota"><span class="pendiente">Audio en producción</span> <span id="audio-detalle" hidden>En el dispositivo, este botón reproduce una versión narrada del panel y del último mensaje del árbol.</span></p>' +
+          '</div>' +
           '<p class="nota acceso-nota">En el dispositivo real estos botones abren la cuenta del árbol en la aplicación.</p>' +
           '<div class="otros-arboles">' +
             '<a href="index.html#arboles">Conocer a los otros árboles de la red</a>' +
@@ -61,7 +65,20 @@
           '</div>' +
         '</div>';
 
+      // Audio: en la maqueta solo explica qué hará el botón en el dispositivo.
+      var botonAudio = document.getElementById("boton-audio");
+      botonAudio.addEventListener("click", function () {
+        var detalle = document.getElementById("audio-detalle");
+        detalle.hidden = !detalle.hidden;
+        botonAudio.setAttribute("aria-expanded", String(!detalle.hidden));
+      });
+
       AP.montar();
+
+      // El contenido se genera con JS: volver al ancla #audio al cargar.
+      if (location.hash === "#audio") {
+        window.addEventListener("load", function () { document.getElementById("audio").scrollIntoView(); });
+      }
     })();
   </script>
 </body>

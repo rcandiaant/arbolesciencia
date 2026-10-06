@@ -27,7 +27,7 @@ Cada dato lleva su sello en el mismo gráfico o tarjeta.
 - **«Dato de demostración»:** valores ilustrativos. Son las series de los sensores (los nodos aún no están instalados) y las publicaciones de ejemplo.
 - **«Dato real · CR2MET»:** cifras climáticas extraídas de CR2MET. Aparece solo si `js/clima.js` tiene `real: true`; mientras no haya extracción, el módulo climático muestra valores de demostración.
 - **Cuentas y handles** (`@tamarugo.pampa`, `@coigue.mocho`, `@patagua.laplatina`): son de ejemplo. Los nombres y la voz definitiva de cada árbol se construyen en talleres de co-diseño.
-- **Panel:** dimensiones, material y anclaje están "a definir".
+- **Panel:** la especificación (atril inclinado, cara de 60 × 40 cm, ACM con estructura de acero galvanizado) está sujeta a validación con CONAF y cotización. La URL corta y el audio son de ejemplo.
 
 ## Método climático
 
@@ -72,7 +72,6 @@ Todas las rutas son relativas, así que también funciona en una subcarpeta de c
 - Datos reales de CR2MET en `js/clima.js`: hoy son valores de demostración. CR2MET v2.5 está en Zenodo (~6,8 GB de Tmax diaria); se extraen solo las celdas de los tres árboles.
 - Fotos de los tres ejemplares monitoreados (hoy hay fotos referenciales de cada especie).
 - Foto del nodo de INIA instalado.
-- Dimensiones, material y anclaje del panel.
 - Fuente científica del tema "Por qué el tronco se encoge de día".
-- Cápsulas audiovisuales del repositorio.
+- Cápsulas audiovisuales del repositorio y versión en audio del panel.
 - Enlace público definitivo (Vercel) para el formulario, sección 2.6.

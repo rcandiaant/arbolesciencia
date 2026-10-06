@@ -36,11 +36,15 @@
       <section class="seccion tarjeta ficha-tecnica" aria-labelledby="titulo-ficha">
         <h2 id="titulo-ficha">Ficha técnica</h2>
         <dl>
-          <dt>Dimensiones</dt><dd><span class="pendiente">a definir</span></dd>
-          <dt>Material</dt><dd><span class="pendiente">a definir (resistente a la intemperie)</span></dd>
-          <dt>Anclaje</dt><dd><span class="pendiente">a definir</span></dd>
+          <dt>Formato</dt><dd>Atril inclinado (30–45°), con el borde superior a unos 0,9 m del suelo, legible desde una silla de ruedas.</dd>
+          <dt>Cara gráfica</dt><dd>60 × 40 cm.</dd>
+          <dt>Material</dt><dd>Placa de aluminio compuesto (ACM) de 3–4 mm, impresión UV con laminado anti-UV y anti-grafiti.</dd>
+          <dt>Estructura</dt><dd>Acero galvanizado.</dd>
+          <dt>Anclaje</dt><dd>Según indique la institución administradora (CONAF / INIA).</dd>
+          <dt>Accesibilidad</dt><dd>Título en relieve; QR de 5 × 5 cm con la URL corta escrita debajo; el QR ofrece una versión en audio.</dd>
         </dl>
         <p class="nota" style="margin:12px 0 0">El dibujo es referencial: no representa medidas ni proporciones definitivas.</p>
+        <p class="nota" style="margin:4px 0 0">Especificación sujeta a validación con CONAF y cotización.</p>
       </section>
 
     </div>
@@ -90,38 +94,47 @@
           '<rect x="-2" y="-2" width="29" height="29" fill="#ffffff"/><path d="' + d + '" fill="#1d241f"/></svg>';
       }
 
-      // Escena: árbol, panel sobre su soporte y persona a escala referencial
+      // Escena: árbol, atril inclinado (vista lateral), persona en silla de ruedas y persona de pie. Escala referencial (~56 px = 1 m).
       var escena =
-        '<svg viewBox="0 0 400 300" role="img" aria-labelledby="escena-t escena-d">' +
+        '<svg viewBox="0 0 460 300" role="img" aria-labelledby="escena-t escena-d">' +
           '<title id="escena-t">Dibujo del panel interpretativo junto al ' + esc(a.comun.toLowerCase()) + '</title>' +
-          '<desc id="escena-d">Un árbol estilizado; a su lado, el panel sobre dos postes anclados al suelo, y una persona de pie como referencia de tamaño. Escala referencial.</desc>' +
-          '<rect x="0" y="262" width="400" height="38" fill="#ece3cf"/>' +
-          '<line x1="0" y1="262" x2="400" y2="262" stroke="#8a4b14" stroke-width="2"/>' +
+          '<desc id="escena-d">Vista lateral. Un árbol estilizado; a su lado, el panel como un atril inclinado entre 30 y 45 grados sobre un pedestal, con su borde superior a unos 0,9 metros del suelo. Frente al atril, una persona en silla de ruedas lo lee a la altura de sus ojos, y más atrás una persona de pie como referencia de tamaño. Escala referencial.</desc>' +
+          '<rect x="0" y="262" width="460" height="38" fill="#ece3cf"/>' +
+          '<line x1="0" y1="262" x2="460" y2="262" stroke="#8a4b14" stroke-width="2"/>' +
           // Árbol
           '<path d="M118 262 L124 150 L136 150 L142 262 Z" fill="#6b4a2b"/>' +
           '<path d="M128 190 L100 160 M132 175 L160 150" stroke="#6b4a2b" stroke-width="7" stroke-linecap="round"/>' +
           '<ellipse cx="130" cy="105" rx="92" ry="70" fill="#2f6b52"/>' +
           '<ellipse cx="88" cy="128" rx="48" ry="38" fill="#1f4d3a"/>' +
           '<ellipse cx="172" cy="125" rx="50" ry="40" fill="#3d7d60"/>' +
-          // Panel y soporte
-          '<rect x="258" y="214" width="6" height="48" fill="#4a554d"/>' +
-          '<rect x="310" y="214" width="6" height="48" fill="#4a554d"/>' +
-          '<rect x="252" y="262" width="18" height="16" fill="none" stroke="#4a554d" stroke-width="1.5" stroke-dasharray="3 2"/>' +
-          '<rect x="304" y="262" width="18" height="16" fill="none" stroke="#4a554d" stroke-width="1.5" stroke-dasharray="3 2"/>' +
-          '<rect x="244" y="160" width="86" height="58" rx="3" fill="#ffffff" stroke="#1d241f" stroke-width="2"/>' +
-          '<rect x="246" y="162" width="82" height="14" fill="#1f4d3a"/>' +
-          '<rect x="250" y="181" width="40" height="3" fill="#4a554d"/><rect x="250" y="188" width="34" height="3" fill="#4a554d"/>' +
-          '<rect x="250" y="195" width="38" height="3" fill="#4a554d"/><rect x="250" y="202" width="30" height="3" fill="#4a554d"/>' +
-          '<rect x="303" y="182" width="20" height="20" fill="#1d241f"/><rect x="306" y="185" width="14" height="14" fill="#ffffff"/><rect x="309" y="188" width="8" height="8" fill="#1d241f"/>' +
-          // Persona
-          '<circle cx="364" cy="176" r="9" fill="#4a554d"/>' +
-          '<path d="M354 190 Q364 185 374 190 L377 228 L371 228 L370 262 L365 262 L364 232 L363 262 L358 262 L357 228 L351 228 Z" fill="#4a554d"/>' +
+          // Atril: pedestal, placa base y cara inclinada (borde alto lejos del lector)
+          '<rect x="264" y="258" width="30" height="4" fill="#4a554d"/>' +
+          '<rect x="276" y="222" width="7" height="36" fill="#4a554d"/>' +
+          '<polygon points="262,212 296,233 293,238 259,217" fill="#ffffff" stroke="#1d241f" stroke-width="2" stroke-linejoin="round"/>' +
+          '<line x1="264" y1="215" x2="292" y2="232" stroke="' + esc(a.color) + '" stroke-width="3"/>' +
+          // Cota de altura 0,9 m
+          '<line x1="246" y1="212" x2="260" y2="212" stroke="#8a4b14" stroke-width="1.5" stroke-dasharray="3 2"/>' +
+          '<line x1="250" y1="214" x2="250" y2="260" stroke="#8a4b14" stroke-width="1.5"/>' +
+          '<path d="M246 216 L250 210 L254 216 M246 256 L250 262 L254 256" fill="none" stroke="#8a4b14" stroke-width="1.5"/>' +
+          // Persona en silla de ruedas, mirando al atril
+          '<circle cx="349" cy="244" r="18" fill="none" stroke="#4a554d" stroke-width="3"/>' +
+          '<circle cx="320" cy="256" r="5" fill="none" stroke="#4a554d" stroke-width="2.5"/>' +
+          '<path d="M322 251 L330 228 L360 228 L364 196" fill="none" stroke="#4a554d" stroke-width="3" stroke-linejoin="round"/>' +
+          '<circle cx="345" cy="180" r="8.5" fill="#4a554d"/>' +
+          '<path d="M339 191 Q346 188 352 192 L354 226 L338 226 Z" fill="#4a554d"/>' +
+          '<path d="M340 224 L320 224 L318 250" fill="none" stroke="#4a554d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>' +
+          '<path d="M342 200 L316 214" stroke="#4a554d" stroke-width="4.5" stroke-linecap="round"/>' +
+          // Persona de pie
+          '<circle cx="420" cy="176" r="9" fill="#4a554d"/>' +
+          '<path d="M410 190 Q420 185 430 190 L433 228 L427 228 L426 262 L421 262 L420 232 L419 262 L414 262 L413 228 L407 228 Z" fill="#4a554d"/>' +
           // Rótulos
           '<g font-family="system-ui, sans-serif" font-size="16" fill="#1d241f">' +
-            '<text x="287" y="152" text-anchor="middle" font-weight="700">Panel</text>' +
+            '<text x="279" y="184" text-anchor="middle" font-weight="700">Atril</text>' +
+            '<text x="279" y="201" text-anchor="middle" font-size="14">30–45°</text>' +
             '<text x="130" y="286" text-anchor="middle">' + esc(a.comun) + '</text>' +
-            '<text x="287" y="295" text-anchor="middle" font-size="14">anclaje a definir</text>' +
-            '<text x="360" y="158" text-anchor="middle" font-size="14">persona</text>' +
+            '<text x="244" y="242" text-anchor="end" font-size="14" fill="#8a4b14" font-weight="700">0,9 m</text>' +
+            '<text x="342" y="290" text-anchor="middle" font-size="14">silla de ruedas</text>' +
+            '<text x="420" y="158" text-anchor="middle" font-size="14">persona</text>' +
           '</g>' +
           '<g font-family="system-ui, sans-serif" font-size="15" fill="#8a4b14" font-weight="700">' +
             '<rect x="8" y="8" width="156" height="26" rx="13" fill="#fbf3ea" stroke="#8a4b14" stroke-dasharray="3 2"/>' +
@@ -145,6 +158,7 @@
       document.getElementById("letrero").innerHTML =
         '<div class="letrero-cabeza">' +
           '<h3>Este árbol habla</h3>' +
+          '<p class="marca-relieve">' + ICONOS.relieve + 'Título en relieve</p>' +
           '<p class="nombre">' + esc(a.comun) + '</p>' +
           '<p class="handle">Nombre en la red: <span class="handle-ejemplo">' + esc(a.handle) + '</span></p>' +
         '</div>' +
@@ -162,9 +176,13 @@
           '<div class="letrero-bloque">' +
             '<h3>Síguelo</h3>' +
             '<div class="siguelo">' +
+              '<div class="qr-columna">' +
               '<a class="qr-enlace" href="acceso.html?arbol=' + id + '">' + qrEjemplo(a.id) +
                 '<span class="qr-rotulo">QR de ejemplo</span>' +
                 '<span class="visualmente-oculto">: abrir la página de acceso del ' + esc(a.comun.toLowerCase()) + '</span></a>' +
+              '<p class="url-corta"><span class="url-texto">inia.cl/arboles/<wbr>' + esc(a.id) + '</span><span class="url-rotulo">URL de ejemplo</span></p>' +
+              '<a class="escuchalo" href="acceso.html?arbol=' + id + '#audio">' + ICONOS.audiodescripcion + '<span>Escúchalo</span></a>' +
+              '</div>' +
               '<div>' +
                 '<p>Escanea el código para seguir a este árbol en Instagram y X, entrar a su ficha y conocer a los otros árboles de la red.</p>' +
                 '<p class="nota">En la maqueta, haz clic en el código para ver lo que aparece al escanearlo.</p>' +
