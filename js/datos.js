@@ -11,7 +11,7 @@ window.MENCION_IA = "En el dispositivo, cada mensaje se genera a partir de datos
 
 window.COMPONENTES = [
   { id: "cuentas", titulo: "Cuentas de los árboles en Instagram y X", rol: "Componente central",
-    texto: "Cada árbol publica a diario, en primera persona, lo que registran sus sensores, y conversa con los otros árboles de la red." },
+    texto: "Cada árbol publica varias veces por semana, en primera persona, lo que registran sus sensores, y conversa con los otros árboles de la red." },
   { id: "plataforma", titulo: "Plataforma web", rol: "Capa de profundidad",
     texto: "Mapa, ficha de cada árbol con sus variables, historial de publicaciones y un repositorio de contenidos por niveles: mensaje, explicación, cápsula y fuente científica." },
   { id: "panel", titulo: "Panel interpretativo en terreno", rol: "Encuentro presencial",
