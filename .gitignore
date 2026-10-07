@@ -5,3 +5,14 @@ Thumbs.db
 desktop.ini
 __pycache__/
 *.pyc
+
+# Respaldos de editores y archivos del sistema
+*~
+*.un~
+*.swp
+.DS_Store
+.vscode/
+
+# Datos crudos de CR2MET: nunca dentro del repo (ver herramientas/LEEME.md)
+*.nc
+cr2met_trabajo/
