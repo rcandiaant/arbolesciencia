@@ -4,7 +4,8 @@
 // Uso (con el sitio servido desde la raíz de maqueta-2027 en otra terminal: python -m http.server 8790):
 //   node herramientas/verificar.mjs [baseURL] [dirCapturas]
 //   baseURL      por defecto http://localhost:8790/
-//   dirCapturas  por defecto capturas/ (pasa otra carpeta para probar sin tocar las oficiales)
+//   dirCapturas  por defecto una carpeta temporal fuera del repo. Las capturas oficiales (capturas/) solo se
+//                regeneran en hitos: node herramientas/verificar.mjs http://localhost:8790/ capturas
 //
 // Revisa cada página a 390 y 1280 px: errores de consola y de red (salvo teselas de OpenStreetMap),
 // scroll horizontal, rayas largas (—), marcadores {…} sin rellenar, imágenes sin alt, recursos externos,
@@ -13,10 +14,14 @@
 import { chromium } from "playwright";
 import { fileURLToPath } from "url";
 import path from "path";
+import os from "os";
+import fs from "fs";
 
 const raiz = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const base = process.argv[2] || "http://localhost:8790/";
-const dirCap = process.argv[3] || path.join(raiz, "capturas");
+const dirCap = path.resolve(process.argv[3] || path.join(os.tmpdir(), "maqueta-capturas"));
+fs.mkdirSync(dirCap, { recursive: true });
+console.log("Capturas en:", dirCap);
 const paginas = [
   ["01-portada", "index.html"],
   ["02-panel", "panel.html?arbol=patagua"],

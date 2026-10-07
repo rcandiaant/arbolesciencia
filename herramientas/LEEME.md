@@ -66,4 +66,10 @@ Cada vez (con el sitio servido en otra terminal, desde la raíz: `python -m http
 node herramientas/verificar.mjs
 ```
 
-Sin argumentos usa `http://localhost:8790/` y escribe en `capturas/`. Para probar sin tocar las capturas oficiales: `node herramientas/verificar.mjs http://localhost:8790/ ../prueba_capturas`. Termina con código 1 si encuentra problemas.
+Sin argumentos usa `http://localhost:8790/` y guarda las capturas en una carpeta temporal fuera del repo (la indica al empezar). Termina con código 1 si encuentra problemas.
+
+**Capturas oficiales solo en hitos.** Cada regeneración de `capturas/` suma ~10 MB al historial de git, así que se actualizan y se commitean solo en momentos clave (por ejemplo, antes de enviar la postulación), en un commit aparte `chore(capturas): …`:
+
+```
+node herramientas/verificar.mjs http://localhost:8790/ capturas
+```

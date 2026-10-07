@@ -79,7 +79,7 @@ Todas las rutas son relativas, así que también funciona en una subcarpeta de c
 
 ## Capturas
 
-`capturas/` (excluida del despliegue por `.vercelignore`) tiene cada pantalla a 390 px (móvil) y 1280 px (escritorio), generadas por `herramientas/verificar.mjs`.
+`capturas/` (excluida del despliegue por `.vercelignore`) tiene cada pantalla a 390 px (móvil) y 1280 px (escritorio), generadas por `herramientas/verificar.mjs`. Se actualizan solo en hitos (por ejemplo, antes de enviar la postulación), así que pueden no reflejar el último cambio menor.
 
 ## Mantenimiento
 
