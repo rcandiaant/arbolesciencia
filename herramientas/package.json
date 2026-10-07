@@ -1,0 +1,12 @@
+{
+  "name": "arboles-parlantes-herramientas",
+  "private": true,
+  "description": "Herramientas de mantenimiento de la maqueta 2027 (no se publican en el sitio).",
+  "type": "module",
+  "scripts": {
+    "verificar": "node verificar.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}

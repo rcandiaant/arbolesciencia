@@ -1,6 +1,6 @@
 // Comparación climática histórica por árbol (CR2MET contra CR2MET).
 // La anomalía se calcula solo dentro de la serie CR2MET; el nodo aporta la respuesta del árbol.
-// Archivo GENERADO con gen_clima.py desde las series diarias CR2MET v2.5: no editar a mano.
+// Archivo GENERADO con herramientas/gen_clima.py desde las series diarias CR2MET v2.5: no editar a mano.
 window.CLIMA = {
   "real": true,
   "version": "CR2MET v2.5",
