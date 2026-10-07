@@ -1,4 +1,4 @@
-// Árboles Parlantes · maqueta 2027 · Cómo funciona
+// Árboles Parlantes · maqueta 2027 · Funcionamiento
 // Rellena el ejemplo "del dato al mensaje" con la publicación t1 del tamarugo.
 (function () {
   const pub = (window.PUBLICACIONES || []).find(p => p.id === "t1");

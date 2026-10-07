@@ -17,8 +17,7 @@
     return `${lat}, ${lng}`;
   }
   // Artículo según el nombre común: "del tamarugo", "de la patagua".
-  function del_(a) { return /a$/i.test(a.comun) ? `de la ${a.comun.toLowerCase()}` : `del ${a.comun.toLowerCase()}`; }
-  function al_(a) { return /a$/i.test(a.comun) ? `a la ${a.comun.toLowerCase()}` : `al ${a.comun.toLowerCase()}`; }
+  const del_ = AP.del_, al_ = AP.al_;
   function anclaTema(id) {
     const t = (window.TEMAS || []).find(x => x.id === id);
     return t ? t.titulo : "";
@@ -45,8 +44,8 @@
       <p class="especie"><em>${E(arbol.especie)}</em></p>
       <p class="handle handle-ejemplo">${E(arbol.handle)}</p>
       <dl class="datos-arbol">
-        <div><dt>Dónde vivo</dt><dd>${E(arbol.lugar)}</dd></div>
-        <div><dt>Quién lo administra</dt><dd>${E(arbol.administra)}</dd></div>
+        <div><dt>Lugar</dt><dd>${E(arbol.lugar)}</dd></div>
+        <div><dt>Administra</dt><dd>${E(arbol.administra)}</dd></div>
         <div><dt>Región</dt><dd>${E(arbol.region)}</dd></div>
         <div><dt>Ecosistema</dt><dd>${E(arbol.ecosistema)}</dd></div>
       </dl>
@@ -82,8 +81,14 @@
     const mapa = L.map(cont, {
       scrollWheelZoom: false,
       dragging: !tactil,
-      zoomControl: true
+      zoomControl: false
     }).setView([arbol.lat, arbol.lng], 6);
+    // Controles y botón de cierre del popup en español (Leaflet los trae en inglés).
+    L.control.zoom({ zoomInTitle: "Acercar", zoomOutTitle: "Alejar" }).addTo(mapa);
+    mapa.on("popupopen", e => {
+      const cerrar = e.popup.getElement() && e.popup.getElement().querySelector(".leaflet-popup-close-button");
+      if (cerrar) { cerrar.setAttribute("aria-label", "Cerrar"); cerrar.title = "Cerrar"; }
+    });
 
     const capa = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 18,
@@ -115,7 +120,7 @@
     }
   }
 
-  // ---------- 3. Cómo estoy ahora ----------
+  // ---------- 3. Mi estado ahora ----------
   const series = {};
   window.VARIABLES.forEach(v => { series[v.id] = hayD3 ? G.serie(arbol, v.id) : []; });
 
@@ -239,7 +244,7 @@
         </details>
       </figure>
       <aside class="como-se-calcula" aria-labelledby="titulo-calculo">
-        <h3 id="titulo-calculo">Cómo se calcula</h3>
+        <h3 id="titulo-calculo">El cálculo, paso a paso</h3>
         <ol>
           <li>Usamos CR2MET, una serie climática diaria de temperatura y precipitación para todo Chile continental desde 1960, construida por el Centro de Ciencia del Clima y la Resiliencia (CR2).</li>
           <li>Tomamos la celda de esa grilla más cercana al árbol y contamos, cada año, los días con temperatura máxima sobre ${E(G.numFlex(c.umbral))} °C, el umbral definido para este lugar.</li>
@@ -249,8 +254,8 @@
         <p>Un solo día caluroso no dice nada sobre el clima. Lo que muestra el cambio climático es la frecuencia de esos días a lo largo de décadas.</p>
         <p class="fuente"><strong>Fuente:</strong> ${E(C.fuente)}</p>
         <p class="enlaces-tema">
-          <a href="repositorio.html#dias-como-hoy">Más sobre cómo se calcula</a>
-          <a href="repositorio.html#tiempo-y-clima">Tiempo y clima: por qué un día caluroso no es el cambio climático</a>
+          <a href="repositorio.html#dias-como-hoy">Más sobre el cálculo</a>
+          <a href="repositorio.html#tiempo-y-clima">Tiempo y clima: un día caluroso no basta para hablar de cambio climático</a>
         </p>
       </aside>`;
     dibujarBarras();

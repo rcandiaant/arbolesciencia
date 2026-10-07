@@ -26,7 +26,7 @@ Cada dato lleva su sello en el mismo gráfico o tarjeta.
 
 - **«Dato de demostración»:** valores ilustrativos. Son las series de los sensores (los nodos aún no están instalados) y las publicaciones de ejemplo.
 - **«Dato real · CR2MET»:** cifras climáticas extraídas de CR2MET v2.5 (módulo «¿Cuántos días como hoy había antes?», tabla del repositorio y cifras dentro de las publicaciones de ejemplo, que llevan además el sello «Publicación de ejemplo»).
-- **Cuentas y handles** (`@tamarugo.pampa`, `@coigue.mocho`, `@patagua.laplatina`): son de ejemplo. Los nombres y la voz definitiva de cada árbol se construyen en talleres de co-diseño.
+- **Cuentas y handles** (`@tamarugo.pampa`, `@coigue.mocho`, `@patagua.laplatina`): son de ejemplo. Los nombres y la voz definitiva de cada árbol se construyen en talleres de codiseño.
 - **Panel:** la especificación (atril inclinado, cara de 60 × 40 cm, ACM con estructura de acero galvanizado) está sujeta a validación con CONAF y cotización. La URL corta y el audio son de ejemplo.
 
 ## Método climático

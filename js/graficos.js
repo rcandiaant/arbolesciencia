@@ -5,10 +5,10 @@
 window.GRAFICOS = (function () {
   // ---------- Formato numérico (es-CL) ----------
   function num(n, dec) {
-    return Number(n).toLocaleString("es-CL", { minimumFractionDigits: dec, maximumFractionDigits: dec });
+    return Number(n).toLocaleString("es-CL", { minimumFractionDigits: dec, maximumFractionDigits: dec }).replace(/^-/, "−");
   }
   function numFlex(n) {
-    return Number(n).toLocaleString("es-CL", { minimumFractionDigits: 0, maximumFractionDigits: 1 });
+    return Number(n).toLocaleString("es-CL", { minimumFractionDigits: 0, maximumFractionDigits: 1 }).replace(/^-/, "−");
   }
   const DECIMALES = { savia: 2, diametro: 0, suelo: 1, temperatura: 1, humedad: 0 };
   const locale = d3.formatLocale({ decimal: ",", thousands: ".", grouping: [3], currency: ["$", ""], minus: "−" });

@@ -1,6 +1,6 @@
 // Árboles Parlantes · maqueta 2027 · fuente única de contenido
 // Los handles son de ejemplo (mockup): no corresponden a cuentas reales.
-// Nombres y voz definitivos de cada árbol se construyen en los talleres de co-diseño (Formulario 2.3).
+// Nombres y voz definitivos de cada árbol se construyen en los talleres de codiseño (Formulario 2.3).
 
 window.NOMBRE_PROYECTO = "ÁRBOLES PARLANTES: una red social de árboles nativos sensorizados para la divulgación del cambio climático";
 
@@ -20,27 +20,28 @@ window.COMPONENTES = [
 
 // Variables que mide cada nodo (Formulario 2.1). Rangos solo para generar series de demostración.
 window.VARIABLES = [
-  { id: "savia", nombre: "Flujo de savia", unidad: "L/h", descripcion: "Cuánta agua sube por el tronco hacia las hojas." },
+  { id: "savia", nombre: "Flujo de savia", unidad: "L/h", descripcion: "El agua que sube por el tronco hacia las hojas." },
   { id: "diametro", nombre: "Variación del diámetro del tronco", unidad: "µm", descripcion: "El tronco se contrae de día al perder agua y se recupera de noche." },
-  { id: "suelo", nombre: "Humedad del suelo", unidad: "%", descripcion: "Cuánta agua hay disponible junto a las raíces." },
+  { id: "suelo", nombre: "Humedad del suelo", unidad: "%", descripcion: "El agua disponible junto a las raíces." },
   { id: "temperatura", nombre: "Temperatura del aire", unidad: "°C", descripcion: "Medida en el nodo, junto al árbol." },
-  { id: "humedad", nombre: "Humedad relativa del aire", unidad: "%", descripcion: "Qué tan seco está el aire que rodea las hojas." }
+  { id: "humedad", nombre: "Humedad relativa del aire", unidad: "%", descripcion: "La sequedad del aire que rodea las hojas." }
 ];
 
 // Temas del repositorio (ids = anclas en repositorio.html). Cada publicación enlaza a uno.
 window.TEMAS = [
-  { id: "flujo-de-savia", titulo: "Qué es el flujo de savia y por qué baja" },
-  { id: "diametro-tronco", titulo: "Por qué el tronco se encoge de día" },
+  { id: "flujo-de-savia", titulo: "El flujo de savia: el agua que sube por el árbol" },
+  { id: "diametro-tronco", titulo: "El tronco que se encoge de día" },
   { id: "suelo-agua-planta", titulo: "El suelo, el agua y la planta" },
-  { id: "estres-hidrico", titulo: "Qué es el estrés hídrico" },
-  { id: "tiempo-y-clima", titulo: "Tiempo y clima: por qué un día caluroso no es el cambio climático" },
-  { id: "dias-como-hoy", titulo: "¿Cuántos días como hoy había antes? Cómo se calcula" }
+  { id: "estres-hidrico", titulo: "El estrés hídrico" },
+  { id: "tiempo-y-clima", titulo: "Tiempo y clima: un día caluroso no basta para hablar de cambio climático" },
+  { id: "dias-como-hoy", titulo: "¿Cuántos días como hoy había antes? El cálculo" }
 ];
 
 window.ARBOLES = [
   {
     id: "tamarugo",
     comun: "Tamarugo",
+    genero: "m",
     especie: "Prosopis tamarugo",
     handle: "@tamarugo.pampa",
     lugar: "Reserva Nacional Pampa del Tamarugal",
@@ -65,6 +66,7 @@ window.ARBOLES = [
   {
     id: "coigue",
     comun: "Coigüe",
+    genero: "m",
     especie: "Nothofagus dombeyi",
     handle: "@coigue.mocho",
     lugar: "Reserva Nacional Mocho-Choshuenco",
@@ -92,6 +94,7 @@ window.ARBOLES = [
   {
     id: "patagua",
     comun: "Patagua",
+    genero: "f",
     especie: "Crinodendron patagua",
     handle: "@patagua.laplatina",
     lugar: "INIA La Platina",

@@ -32,11 +32,11 @@
       var a = AP.arbolActual();
       var id = encodeURIComponent(a.id);
 
-      document.title = "Al escanear el QR del " + a.comun.toLowerCase() + " · Árboles Parlantes · Maqueta 2027";
+      document.title = "Al escanear el QR " + AP.del_(a) + " · Árboles Parlantes · Maqueta 2027";
 
       var foto = a.foto
         ? '<img class="foto-arbol" src="' + esc(a.foto) + '" alt="' + esc(a.fotoAlt) + '">' + AP.creditoFoto(a)
-        : '<div class="placeholder-foto foto-arbol" role="img" aria-label="Foto del ' + esc(a.comun.toLowerCase()) + ' pendiente">Foto del ' + esc(a.comun.toLowerCase()) + ' – pendiente</div>';
+        : '<div class="placeholder-foto foto-arbol" role="img" aria-label="Foto ' + esc(AP.del_(a)) + ' pendiente">Foto ' + esc(AP.del_(a)) + ' – pendiente</div>';
 
       var otros = window.ARBOLES.filter(function (x) { return x.id !== a.id; }).map(function (x) {
         return '<li><a href="acceso.html?arbol=' + encodeURIComponent(x.id) + '">' + esc(x.comun) + '</a></li>';
@@ -55,7 +55,7 @@
             '<li><a class="boton bloque secundario" href="arbol.html?arbol=' + id + '">' + ICONOS.ficha + 'Ver mi ficha</a></li>' +
           '</ul>' +
           '<div class="audio-acceso" id="audio">' +
-            '<button type="button" class="boton bloque secundario" id="boton-audio" aria-describedby="audio-nota" aria-expanded="false" aria-controls="audio-nota">' + ICONOS.audiodescripcion + 'Escuchar al ' + esc(a.comun.toLowerCase()) + '</button>' +
+            '<button type="button" class="boton bloque secundario" id="boton-audio" aria-describedby="audio-nota" aria-expanded="false" aria-controls="audio-nota">' + ICONOS.audiodescripcion + 'Escuchar ' + esc(AP.al_(a)) + '</button>' +
             '<p class="audio-nota" id="audio-nota"><span class="pendiente">Audio en producción</span> <span id="audio-detalle" hidden>En el dispositivo, este botón reproduce una versión narrada del panel y del último mensaje del árbol.</span></p>' +
           '</div>' +
           '<p class="nota acceso-nota">En el dispositivo real estos botones abren la cuenta del árbol en la aplicación.</p>' +

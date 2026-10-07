@@ -174,7 +174,7 @@
     ).join("");
     const participa = autores.some(a => a.id === activo.id);
     return `<h3 class="subtitulo-red">Hilo de respuestas entre ${esc(nombres)}</h3>
-      <p class="nota">${participa ? "" : `${esc(activo.comun)} no participa en este hilo; se muestra como ejemplo de conversación entre dos árboles de la red. `}En X la conversación ocurre como respuestas entre cuentas, todas en un mismo día.</p>
+      <p class="nota">${participa ? "" : `${esc(AP.el_(activo).charAt(0).toUpperCase() + AP.el_(activo).slice(1))} no participa en este hilo; se muestra como ejemplo de conversación entre dos árboles de la red. `}En X la conversación ocurre como respuestas entre cuentas, todas en un mismo día.</p>
       <ol class="hilo" aria-label="Hilo de respuestas entre ${esc(nombres)}">${items}</ol>`;
   }
 

@@ -2,13 +2,13 @@
 // Requiere js/datos.js y js/clima.js cargados antes.
 
 window.PASOS = [
-  { archivo: "index.html", titulo: "Qué es" },
+  { archivo: "index.html", titulo: "Presentación" },
   { archivo: "panel.html", titulo: "Panel en terreno" },
   { archivo: "acceso.html", titulo: "Al escanear el QR" },
   { archivo: "arbol.html", titulo: "Ficha del árbol" },
   { archivo: "redes.html", titulo: "Cuentas en redes" },
   { archivo: "repositorio.html", titulo: "Explicación y fuentes" },
-  { archivo: "como-funciona.html", titulo: "Cómo funciona" }
+  { archivo: "como-funciona.html", titulo: "Funcionamiento" }
 ];
 
 window.AP = (function () {
@@ -21,6 +21,11 @@ window.AP = (function () {
     const id = new URLSearchParams(location.search).get("arbol");
     return arbolPorId(id) || arbolPorId("patagua");
   }
+
+  // Artículos según el género del nombre común (patagua es femenino).
+  function el_(a) { return (a.genero === "f" ? "la " : "el ") + a.comun.toLowerCase(); }
+  function del_(a) { return (a.genero === "f" ? "de la " : "del ") + a.comun.toLowerCase(); }
+  function al_(a) { return (a.genero === "f" ? "a la " : "al ") + a.comun.toLowerCase(); }
 
   function escapar(txt) {
     return String(txt).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -138,7 +143,7 @@ window.AP = (function () {
     document.body.insertAdjacentHTML("beforeend", pie());
   }
 
-  return { arbolPorId, arbolActual, escapar, rellenar, selloDemo, selloReal, selloClima, selloPublicacion, enlace, creditoFoto, montar };
+  return { arbolPorId, arbolActual, el_, del_, al_, escapar, rellenar, selloDemo, selloReal, selloClima, selloPublicacion, enlace, creditoFoto, montar };
 })();
 
 // Íconos genéricos (no son logos de marcas).

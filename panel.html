@@ -14,7 +14,7 @@
 
       <p class="antetitulo">Elemento 3 · Formato físico</p>
       <h1>Panel interpretativo en terreno</h1>
-      <p class="seccion-intro">Junto a cada árbol se instala un panel impreso que presenta al árbol, explica qué le están midiendo e invita a seguir su cuenta mediante un código QR. Este es un mockup: el contenido final y el diseño gráfico se ajustan en los talleres de co-diseño.</p>
+      <p class="seccion-intro">Junto a cada árbol se instala un panel impreso que presenta al árbol, explica qué le están midiendo e invita a seguir su cuenta mediante un código QR. Este es un mockup: el contenido final y el diseño gráfico se ajustan en los talleres de codiseño.</p>
 
       <nav class="selector-arbol" aria-label="Elegir árbol">
         <p id="selector-titulo">Ver el panel de:</p>
@@ -38,7 +38,7 @@
         <dl>
           <dt>Formato</dt><dd>Atril inclinado (30–45°), con el borde superior a unos 0,9 m del suelo, legible desde una silla de ruedas.</dd>
           <dt>Cara gráfica</dt><dd>60 × 40 cm.</dd>
-          <dt>Material</dt><dd>Placa de aluminio compuesto (ACM) de 3–4 mm, impresión UV con laminado anti-UV y anti-grafiti.</dd>
+          <dt>Material</dt><dd>Placa de aluminio compuesto (ACM) de 3–4 mm, impresión UV con laminado anti-UV y antigrafiti.</dd>
           <dt>Estructura</dt><dd>Acero galvanizado.</dd>
           <dt>Anclaje</dt><dd>Según indique la institución administradora (CONAF / INIA).</dd>
           <dt>Accesibilidad</dt><dd>Título en relieve; QR de 5 × 5 cm con la URL corta escrita debajo; el QR ofrece una versión en audio.</dd>
@@ -59,7 +59,7 @@
       var a = AP.arbolActual();
       var id = encodeURIComponent(a.id);
 
-      document.title = "Panel del " + a.comun.toLowerCase() + " · Árboles Parlantes · Maqueta 2027";
+      document.title = "Panel " + AP.del_(a) + " · Árboles Parlantes · Maqueta 2027";
 
       // Selector de árbol (enlaces: conserva ?arbol= en la barra de pasos)
       document.getElementById("selector").innerHTML = window.ARBOLES.map(function (x) {
@@ -97,7 +97,7 @@
       // Escena: árbol, atril inclinado (vista lateral), persona en silla de ruedas y persona de pie. Escala referencial (~56 px = 1 m).
       var escena =
         '<svg viewBox="0 0 460 300" role="img" aria-labelledby="escena-t escena-d">' +
-          '<title id="escena-t">Dibujo del panel interpretativo junto al ' + esc(a.comun.toLowerCase()) + '</title>' +
+          '<title id="escena-t">Dibujo del panel interpretativo junto ' + esc(AP.al_(a)) + '</title>' +
           '<desc id="escena-d">Vista lateral. Un árbol estilizado; a su lado, el panel como un atril inclinado entre 30 y 45 grados sobre un pedestal, con su borde superior a unos 0,9 metros del suelo. Frente al atril, una persona en silla de ruedas lo lee a la altura de sus ojos, y más atrás una persona de pie como referencia de tamaño. Escala referencial.</desc>' +
           '<rect x="0" y="262" width="460" height="38" fill="#ece3cf"/>' +
           '<line x1="0" y1="262" x2="460" y2="262" stroke="#8a4b14" stroke-width="2"/>' +
@@ -149,7 +149,7 @@
       // Cara frontal
       var foto = a.foto
         ? '<img class="foto-arbol" src="' + esc(a.foto) + '" alt="' + esc(a.fotoAlt) + '">' + AP.creditoFoto(a)
-        : '<div class="placeholder-foto foto-arbol" role="img" aria-label="Foto del ' + esc(a.comun.toLowerCase()) + ' pendiente">Foto del ' + esc(a.comun.toLowerCase()) + ' – pendiente</div>';
+        : '<div class="placeholder-foto foto-arbol" role="img" aria-label="Foto ' + esc(AP.del_(a)) + ' pendiente">Foto ' + esc(AP.del_(a)) + ' – pendiente</div>';
       var variables = window.VARIABLES.map(function (v) {
         return '<li><strong>' + esc(v.nombre) + '</strong><span>' + esc(v.descripcion) + '</span></li>';
       }).join("");
@@ -171,7 +171,7 @@
             (a.nota ? '<p class="nota-arbol">' + esc(a.nota) + '</p>' : '') +
           '</div>' +
           '<div class="letrero-bloque">' +
-            '<h3>Qué le estamos midiendo</h3>' +
+            '<h3>Lo que le estamos midiendo</h3>' +
             '<ul class="variables-lista">' + variables + '</ul>' +
           '</div>' +
           '<div class="letrero-bloque">' +
@@ -180,7 +180,7 @@
               '<div class="qr-columna">' +
               '<a class="qr-enlace" href="acceso.html?arbol=' + id + '">' + qrEjemplo(a.id) +
                 '<span class="qr-rotulo">QR de ejemplo</span>' +
-                '<span class="visualmente-oculto">: abrir la página de acceso del ' + esc(a.comun.toLowerCase()) + '</span></a>' +
+                '<span class="visualmente-oculto">: abrir la página de acceso ' + esc(AP.del_(a)) + '</span></a>' +
               '<p class="url-corta"><span class="url-texto">inia.cl/arboles/<wbr>' + esc(a.id) + '</span><span class="url-rotulo">URL de ejemplo</span></p>' +
               '<a class="escuchalo" href="acceso.html?arbol=' + id + '#audio">' + ICONOS.audiodescripcion + '<span>Escúchalo</span></a>' +
               '</div>' +

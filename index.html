@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Árboles Parlantes · Maqueta 2027 · Qué es y cómo recorrerla</title>
+  <title>Árboles Parlantes · Maqueta 2027 · Presentación y recorrido</title>
   <link rel="icon" href="img/favicon.ico">
   <link rel="stylesheet" href="css/maqueta.css">
   <link rel="stylesheet" href="css/paginas-intro.css">
@@ -29,16 +29,16 @@
         <p class="seccion-intro">Tres individuos de especies nativas en tres territorios distintos: desierto de Tarapacá, zona central y bosque templado de Los Ríos.</p>
         <ul class="arboles-lista rejilla tres" id="arboles-lista"></ul>
         <div class="aviso-codiseno">
-          <p><strong>Nombres y voz en construcción.</strong> Los nombres y la voz definitiva de cada árbol se construyen en talleres de co-diseño con las comunidades. Los nombres de cuenta que aparecen en esta maqueta son de ejemplo.</p>
+          <p><strong>Nombres y voz en construcción.</strong> Los nombres y la voz definitiva de cada árbol se construyen en talleres de codiseño con las comunidades. Los nombres de cuenta que aparecen en esta maqueta son de ejemplo.</p>
         </div>
       </section>
 
       <section class="seccion" aria-labelledby="titulo-recorrer">
-        <h2 id="titulo-recorrer">Cómo recorrer esta maqueta</h2>
+        <h2 id="titulo-recorrer">Recorrido sugerido</h2>
         <p class="seccion-intro">Orden de lectura sugerido. Cada paso tiene botones de anterior y siguiente al final de la página, y la barra superior muestra en qué paso va.</p>
         <ol class="recorrido-lectura" id="recorrido-lectura"></ol>
 
-        <h3 class="seccion">Cómo leer los sellos</h3>
+        <h3 class="seccion">Guía de sellos</h3>
         <div class="sellos-explicacion">
           <div class="tarjeta">
             <span id="ejemplo-sello-demo"></span>
@@ -108,12 +108,12 @@
 
       // Recorrido de lectura
       var lineas = {
-        "index.html": "Esta portada: qué es el dispositivo, sus tres elementos y sus tres árboles.",
+        "index.html": "Esta portada: el dispositivo, sus tres elementos y sus tres árboles.",
         "panel.html": "El panel que se instala junto a cada árbol, con su código QR.",
         "acceso.html": "La pantalla que aparece en el celular al escanear el QR del panel: seguir la cuenta o entrar a la ficha.",
-        "arbol.html": "La plataforma web: mapa, variables que miden los sensores y cuántos días como hoy había antes según la serie climática CR2MET.",
-        "redes.html": "Cómo se ven las cuentas de los árboles en Instagram y X, y cómo conversan entre ellos.",
-        "repositorio.html": "Qué hay detrás de cada mensaje: explicación del fenómeno, cápsula audiovisual y fuente científica.",
+        "arbol.html": "La plataforma web: mapa, variables que miden los sensores y la frecuencia histórica de días calurosos según la serie climática CR2MET.",
+        "redes.html": "Las cuentas de los árboles en Instagram y X, y la conversación entre ellos.",
+        "repositorio.html": "Lo que hay detrás de cada mensaje: explicación del fenómeno, cápsula audiovisual y fuente científica.",
         "como-funciona.html": "El camino del dato: del sensor al mensaje que el equipo revisa antes de publicarlo."
       };
       document.getElementById("recorrido-lectura").innerHTML = window.PASOS.map(function (p, i) {
