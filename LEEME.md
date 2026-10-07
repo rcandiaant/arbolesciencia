@@ -1,5 +1,7 @@
 # Árboles Parlantes · Maqueta 2027
 
+**URL pública:** https://maquetaarbolesciencia.vercel.app
+
 Maqueta navegable de **ÁRBOLES PARLANTES: una red social de árboles nativos sensorizados para la divulgación del cambio climático**, presentada por INIA al Concurso Nacional Ciencia Pública – Dispositivos 2027, con CONAF Tarapacá, CONAF Los Ríos y la Universidad de La Serena.
 
 El dispositivo es una red social de árboles con tres elementos que funcionan como una sola experiencia: las **cuentas de los árboles en Instagram y X** (componente central), la **plataforma web** (capa de profundidad) y el **panel interpretativo en terreno** con código QR.
@@ -8,25 +10,25 @@ El dispositivo es una red social de árboles con tres elementos que funcionan co
 
 La maqueta es un recorrido de 7 pasos. Cada página tiene botones "anterior" y "siguiente" y una barra de progreso.
 
-| Paso | Página | Qué muestra |
+| Paso | Página | Contenido |
 |---|---|---|
-| 1 | `index.html` | Qué es el dispositivo, sus tres elementos y los tres árboles |
-| 2 | `panel.html` | El panel junto al árbol, con QR |
-| 3 | `acceso.html` | Lo que ve una persona al escanear el QR |
-| 4 | `arbol.html` | La ficha del árbol: mapa, variables y "¿Cuántos días como hoy había antes?" |
-| 5 | `redes.html` | Las cuentas en Instagram (con carrusel) y X (hilo entre el tamarugo y el coigüe) |
-| 6 | `repositorio.html` | Los cuatro niveles de profundidad: mensaje, explicación, cápsula y fuente |
-| 7 | `como-funciona.html` | Del sensor al mensaje publicado, con validación del Encargado de contenidos CTCI |
+| 1 · Presentación | `index.html` | El dispositivo, sus tres elementos y los tres árboles |
+| 2 · Panel en terreno | `panel.html` | El panel junto al árbol, con QR |
+| 3 · Al escanear el QR | `acceso.html` | Lo que ve una persona al escanear el QR |
+| 4 · Ficha del árbol | `arbol.html` | La ficha del árbol: mapa, variables y "¿Cuántos días como hoy había antes?" |
+| 5 · Cuentas en redes | `redes.html` | Las cuentas en Instagram (con carrusel) y X (hilo entre el tamarugo y el coigüe) |
+| 6 · Explicación y fuentes | `repositorio.html` | Los cuatro niveles de profundidad: mensaje, explicación, cápsula y fuente |
+| 7 · Funcionamiento | `como-funciona.html` | Del sensor al mensaje publicado, con validación del Encargado de contenidos CTCI |
 
 Las páginas 2 a 5 aceptan `?arbol=tamarugo`, `?arbol=coigue` o `?arbol=patagua`.
 
-## Qué es demostración y qué es real
+## Demostración y datos reales
 
 Cada dato lleva su sello en el mismo gráfico o tarjeta.
 
 - **«Dato de demostración»:** valores ilustrativos. Son las series de los sensores (los nodos aún no están instalados) y las publicaciones de ejemplo.
 - **«Dato real · CR2MET»:** cifras climáticas extraídas de CR2MET v2.5 (módulo «¿Cuántos días como hoy había antes?», tabla del repositorio y cifras dentro de las publicaciones de ejemplo, que llevan además el sello «Publicación de ejemplo»).
-- **Cuentas y handles** (`@tamarugo.pampa`, `@coigue.mocho`, `@patagua.laplatina`): son de ejemplo. Los nombres y la voz definitiva de cada árbol se construyen en talleres de codiseño.
+- **Cuentas y nombres de usuario** (`@tamarugo.pampa`, `@coigue.mocho`, `@patagua.laplatina`): son de ejemplo. Los nombres y la voz definitiva de cada árbol se construyen en talleres de codiseño.
 - **Panel:** la especificación (atril inclinado, cara de 60 × 40 cm, ACM con estructura de acero galvanizado) está sujeta a validación con CONAF y cotización. La URL corta y el audio son de ejemplo.
 
 ## Método climático
@@ -60,10 +62,10 @@ La serie diaria usada (`data/cr2met_tmax_diaria.csv`) y el resumen (`data/cr2met
 Sitio estático sin build. Desde esta carpeta:
 
 ```
-python -m http.server 8080
+python -m http.server 8790
 ```
 
-y abrir http://localhost:8080. Leaflet y D3 están en `vendor/` (sin CDN). Lo único externo son las teselas del mapa de OpenStreetMap; si no cargan, la ficha muestra la lista de lugares con coordenadas.
+y abrir http://localhost:8790. Leaflet y D3 están en `vendor/` (sin CDN). Lo único externo son las teselas del mapa de OpenStreetMap; si no cargan, la ficha muestra la lista de lugares con coordenadas.
 
 ## Publicar
 
@@ -71,19 +73,22 @@ Hosting estático en Vercel, conectado al repositorio de GitHub `rcandiaant/arbo
 
 1. En vercel.com, *Add New → Project → Import* el repositorio.
 2. Framework preset: **Other**. Sin comando de build. Output directory: la raíz (`.`).
-3. Cada push a `main` publica una nueva versión.
+3. Cada push a `main` publica una nueva versión en https://maquetaarbolesciencia.vercel.app (proyecto `maquetaarbolesciencia`). Las URL con hash de cada despliegue están protegidas por Vercel; para compartir, usar siempre la URL de producción.
 
 Todas las rutas son relativas, así que también funciona en una subcarpeta de cualquier hosting estático.
 
 ## Capturas
 
-`capturas/` (excluida del despliegue por `.vercelignore`) tiene cada pantalla a 390 px (móvil) y 1280 px (escritorio), generadas con Playwright.
+`capturas/` (excluida del despliegue por `.vercelignore`) tiene cada pantalla a 390 px (móvil) y 1280 px (escritorio), generadas por `herramientas/verificar.mjs`.
+
+## Mantenimiento
+
+`herramientas/` (excluida del despliegue) reúne los scripts para verificar el sitio y regenerar las capturas, actualizar los datos climáticos de CR2MET (por ejemplo, si cambia la ubicación de un árbol) y editar la lámina de «Funcionamiento». Las instrucciones paso a paso están en [`herramientas/LEEME.md`](herramientas/LEEME.md).
 
 ## Pendientes
 
-- Coordenada del ejemplar de coigüe acordada con CONAF Los Ríos (hoy: entrada de la reserva). Si cambia, hay que volver a extraer su celda CR2MET.
+- Coordenada del ejemplar de coigüe acordada con CONAF Los Ríos (hoy: entrada de la reserva). Si cambia, hay que volver a extraer su celda CR2MET con `herramientas/`.
 - Fotos de los tres ejemplares monitoreados (hoy hay fotos referenciales de cada especie).
 - Foto del nodo de INIA instalado.
-- Fuente científica del tema "Por qué el tronco se encoge de día".
+- Fuente científica del tema «El tronco que se encoge de día».
 - Cápsulas audiovisuales del repositorio y versión en audio del panel.
-- Enlace público definitivo (Vercel) para el formulario, sección 2.6.
