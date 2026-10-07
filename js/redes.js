@@ -1,4 +1,4 @@
-// Árboles Parlantes · maqueta 2027 · mockups de las cuentas en Instagram y X
+// Árboles Parlantes · maqueta 2027 · simulaciones de las cuentas en Instagram y X
 // Requiere js/datos.js, js/clima.js y js/comun.js. Sin horas, likes, seguidores ni contadores.
 (function () {
   const esc = AP.escapar;

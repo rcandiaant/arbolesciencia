@@ -1,5 +1,5 @@
 // Árboles Parlantes · maqueta 2027 · fuente única de contenido
-// Los handles son de ejemplo (mockup): no corresponden a cuentas reales.
+// Los nombres de usuario son de ejemplo (simulación): no corresponden a cuentas reales.
 // Nombres y voz definitivos de cada árbol se construyen en los talleres de codiseño (Formulario 2.3).
 
 window.NOMBRE_PROYECTO = "ÁRBOLES PARLANTES: una red social de árboles nativos sensorizados para la divulgación del cambio climático";
@@ -20,11 +20,11 @@ window.COMPONENTES = [
 
 // Variables que mide cada nodo (Formulario 2.1). Rangos solo para generar series de demostración.
 window.VARIABLES = [
-  { id: "savia", nombre: "Flujo de savia", unidad: "L/h", descripcion: "El agua que sube por el tronco hacia las hojas." },
-  { id: "diametro", nombre: "Variación del diámetro del tronco", unidad: "µm", descripcion: "El tronco se contrae de día al perder agua y se recupera de noche." },
-  { id: "suelo", nombre: "Humedad del suelo", unidad: "%", descripcion: "El agua disponible junto a las raíces." },
-  { id: "temperatura", nombre: "Temperatura del aire", unidad: "°C", descripcion: "Medida en el nodo, junto al árbol." },
-  { id: "humedad", nombre: "Humedad relativa del aire", unidad: "%", descripcion: "La sequedad del aire que rodea las hojas." }
+  { id: "savia", nombre: "Flujo de savia", unidad: "L/h", unidadTexto: "litros por hora", descripcion: "El agua que sube por el tronco hacia las hojas." },
+  { id: "diametro", nombre: "Variación del diámetro del tronco", unidad: "µm", unidadTexto: "micrómetros", descripcion: "El tronco se contrae de día al perder agua y se recupera de noche." },
+  { id: "suelo", nombre: "Humedad del suelo", unidad: "%", unidadTexto: "por ciento", descripcion: "El agua disponible junto a las raíces." },
+  { id: "temperatura", nombre: "Temperatura del aire", unidad: "°C", unidadTexto: "grados Celsius", descripcion: "Medida en el nodo, junto al árbol." },
+  { id: "humedad", nombre: "Humedad relativa del aire", unidad: "%", unidadTexto: "por ciento", descripcion: "Indica qué tan seco está el aire que rodea las hojas." }
 ];
 
 // Temas del repositorio (ids = anclas en repositorio.html). Cada publicación enlaza a uno.
@@ -123,17 +123,17 @@ window.ARBOLES = [
 // dia: fecha ficticia del ejemplo (sin hora inventada ni métricas de interacción).
 window.PUBLICACIONES = [
   { id: "t1", arbol: "tamarugo", dia: "Ejemplo · un día de enero", tipo: "cambio", tema: "flujo-de-savia",
-    texto: "Hoy moví menos agua que ayer: mi flujo de savia bajó en la tarde, cuando el aire estaba más seco. En mi zona de la Pampa, los días sobre {umbral} °C eran {base} al año entre {periodoBase}; entre {periodoReciente} fueron {reciente}." },
+    texto: "Hoy moví menos agua que ayer: mi flujo de savia bajó en la tarde, cuando el aire estaba más seco. En mi zona de la Pampa, entre 1961 y 1990 había {base} días al año con más de {umbral} °C; entre 2011 y 2020 hubo {reciente}." },
   { id: "t2", arbol: "tamarugo", dia: "Ejemplo · un día de julio", tipo: "hoy", tema: "suelo-agua-planta",
-    texto: "Aquí casi nunca llueve. El agua que muevo viene de la napa, varios metros bajo mis raíces. Si la napa baja, no tengo otra fuente." },
+    texto: "Aquí casi nunca llueve. El agua que muevo viene de la napa, a varios metros de profundidad, donde llegan mis raíces. Si la napa baja, no tengo otra fuente." },
   { id: "c1", arbol: "coigue", dia: "Ejemplo · un día de enero", tipo: "cambio", tema: "dias-como-hoy",
-    texto: "Hoy fue un día cálido en el bosque. En mi zona, los días sobre {umbral} °C eran {base} al año entre {periodoBase}; entre {periodoReciente} fueron {reciente}. Para un árbol acostumbrado a la lluvia, eso se nota." },
+    texto: "Hoy fue un día cálido en el bosque. En mi zona, entre 1961 y 1990 había {base} días al año con más de {umbral} °C; entre 2011 y 2020 hubo {reciente}. Para un árbol acostumbrado a la lluvia, {diferencia} días más de calor al año se notan." },
   { id: "c2", arbol: "coigue", dia: "Ejemplo · un día de mayo", tipo: "hoy", tema: "diametro-tronco",
-    texto: "Llovió toda la noche y mi tronco recuperó lo que había perdido durante la semana seca. Mi dendrómetro lo registró." },
+    texto: "Llovió toda la noche y mi tronco recuperó lo que había perdido durante la semana seca. El sensor de mi tronco lo registró." },
   { id: "p1", arbol: "patagua", dia: "Ejemplo · un día de enero", tipo: "cambio", tema: "tiempo-y-clima",
-    texto: "Hoy hizo calor en La Pintana. Un día caluroso por sí solo no muestra el cambio climático; lo muestra cuántos hay. Los días sobre {umbral} °C en mi zona eran {base} al año entre {periodoBase}; entre {periodoReciente} fueron {reciente}." },
+    texto: "Hoy hizo calor en La Pintana. Un día caluroso por sí solo no muestra el cambio climático, sino cuántos días superan cierto valor: en mi zona, entre 1961 y 1990 había {base} días al año con más de {umbral} °C; entre 2011 y 2020 hubo {reciente}." },
   { id: "p2", arbol: "patagua", dia: "Ejemplo · un día de octubre", tipo: "hoy", tema: "estres-hidrico",
-    texto: "El suelo bajo mis raíces se secó esta semana. Al mediodía cierro mis estomas y muevo menos agua: es mi forma de no perder demasiada." }
+    texto: "El suelo bajo mis raíces se secó esta semana. Al mediodía cierro los poros de mis hojas y muevo menos agua: es mi forma de no perder demasiada." }
 ];
 
 // Hilo de conversación en X entre dos cuentas, un mismo día (Formulario 2.2 y 2.5, Tema 3).
@@ -141,8 +141,8 @@ window.HILO = {
   dia: "Ejemplo · un mismo día de enero",
   tema: "tiempo-y-clima",
   mensajes: [
-    { arbol: "tamarugo", tema: "dias-como-hoy", texto: "Hoy el aire de la Pampa estuvo muy seco y mi flujo de savia cayó después del mediodía. Los días sobre {umbral:tamarugo} °C en mi zona pasaron de {base:tamarugo} a {reciente:tamarugo} al año. ¿Cómo estuvo tu día, @coigue.mocho?" },
-    { arbol: "coigue", respondeA: "tamarugo", tema: "dias-como-hoy", texto: "@tamarugo.pampa Acá el suelo sigue húmedo y moví agua toda la tarde. Pero en mi zona los días sobre {umbral:coigue} °C también aumentaron: de {base:coigue} a {reciente:coigue} al año." },
+    { arbol: "tamarugo", tema: "dias-como-hoy", texto: "Hoy el aire de la Pampa estuvo muy seco y mi flujo de savia cayó después del mediodía. En mi zona, los días con más de {umbral:tamarugo} °C pasaron de {base:tamarugo} al año en 1961–1990 a {reciente:tamarugo} en 2011–2020. ¿Cómo estuvo tu día, @coigue.mocho?" },
+    { arbol: "coigue", respondeA: "tamarugo", tema: "dias-como-hoy", texto: "@tamarugo.pampa Acá el suelo sigue húmedo y moví agua toda la tarde. Pero en mi zona los días con más de {umbral:coigue} °C también aumentaron: de {base:coigue} al año en 1961–1990 a {reciente:coigue} en 2011–2020." },
     { arbol: "tamarugo", respondeA: "coigue", tema: "suelo-agua-planta", texto: "@coigue.mocho Tú tienes lluvia de respaldo; yo dependo de la napa. El mismo verano no significa lo mismo para los dos." },
     { arbol: "coigue", respondeA: "tamarugo", texto: "@tamarugo.pampa Por eso conversamos: el cambio climático no se vive igual en el desierto que en el bosque." }
   ]

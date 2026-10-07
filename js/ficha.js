@@ -136,8 +136,8 @@
       return `<li class="tarjeta tarjeta-variable">
         ${AP.selloDemo()}
         <h3>${E(v.nombre)}</h3>
-        <p class="valor"><span class="cifra">${E(formato(v, ult))}</span> <span class="unidad">${E(v.unidad)}</span></p>
-        <p class="nota">Último valor de la serie. ${E(v.descripcion)}</p>
+        <p class="valor"><span class="cifra">${E(formato(v, ult))}</span> <span class="unidad">${E(v.unidadTexto)} (${E(v.unidad)})</span></p>
+        <p class="nota">Medición más reciente. ${E(v.descripcion)}</p>
       </li>`;
     }).join("");
   }
@@ -233,7 +233,7 @@
           <li><span class="muestra linea-promedio" aria-hidden="true"></span>Promedio ${E(c.base.periodo)}: ${E(G.numFlex(c.base.dias))} días al año</li>
         </ul>
         ${notaIncompleta}
-        <figcaption class="nota">Celda CR2MET más cercana al árbol (${E(arbol.lugar)}). Umbral del sitio: ${E(G.numFlex(c.umbral))} °C de temperatura máxima diaria.</figcaption>
+        <figcaption class="nota">Datos del cuadrante de 5 km más cercano al árbol (${E(arbol.lugar)}). Se cuentan los días con más de ${E(G.numFlex(c.umbral))} °C, un calor que entre 1961 y 1990 se alcanzaba cerca de 1 de cada 10 días.</figcaption>
         <details class="ver-tabla">
           <summary>Ver datos en tabla</summary>
           <table>
@@ -248,7 +248,7 @@
         <ol>
           <li>Usamos CR2MET, una serie climática diaria de temperatura y precipitación para todo Chile continental desde 1960, construida por el Centro de Ciencia del Clima y la Resiliencia (CR2).</li>
           <li>Tomamos la celda de esa grilla más cercana al árbol y contamos, cada año, los días con temperatura máxima sobre ${E(G.numFlex(c.umbral))} °C, el umbral definido para este lugar.</li>
-          <li>Comparamos la serie consigo misma: el promedio del período de referencia (${E(c.base.periodo)}) frente a la última década disponible (${E(c.reciente.periodo)}). Así se ve si los días calurosos se volvieron más frecuentes.</li>
+          <li>Comparamos el clima de hoy con el de décadas anteriores, usando la misma fuente de datos: el promedio del período de referencia (${E(c.base.periodo)}) frente a la última década disponible (${E(c.reciente.periodo)}). Así se ve si los días calurosos se volvieron más frecuentes.</li>
           <li>El sensor del nodo no entra en este cálculo. Lo que aporta es la respuesta del árbol en esos días: su flujo de savia y la variación de su tronco.</li>
         </ol>
         <p>Un solo día caluroso no dice nada sobre el clima. Lo que muestra el cambio climático es la frecuencia de esos días a lo largo de décadas.</p>

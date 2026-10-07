@@ -35,7 +35,7 @@ window.AP = (function () {
   // y {umbral:id}, {base:id}, {reciente:id} (de otro árbol).
   function rellenar(texto, arbolId) {
     const C = window.CLIMA.arboles;
-    return texto.replace(/\{(umbral|base|reciente|periodoBase|periodoReciente)(?::(\w+))?\}/g, (_, campo, otro) => {
+    return texto.replace(/\{(umbral|base|reciente|periodoBase|periodoReciente|diferencia)(?::(\w+))?\}/g, (_, campo, otro) => {
       const c = C[otro || arbolId];
       if (!c) return "";
       switch (campo) {
@@ -44,6 +44,7 @@ window.AP = (function () {
         case "reciente": return Math.round(c.reciente.dias);
         case "periodoBase": return c.base.periodo;
         case "periodoReciente": return c.reciente.periodo;
+        case "diferencia": return Math.round(c.reciente.dias) - Math.round(c.base.dias);
       }
     });
   }
@@ -60,7 +61,7 @@ window.AP = (function () {
   }
   // Sello para publicaciones de ejemplo: el texto siempre es de ejemplo; si trae cifras climáticas
   // y CLIMA es real, se agrega un segundo sello que lo indica.
-  const MARCADOR_CLIMA = /\{(umbral|base|reciente|periodoBase|periodoReciente)(?::\w+)?\}/;
+  const MARCADOR_CLIMA = /\{(umbral|base|reciente|periodoBase|periodoReciente|diferencia)(?::\w+)?\}/;
   function selloPublicacion(textoOriginal) {
     const ejemplo = selloDemo("Publicación de ejemplo");
     if (MARCADOR_CLIMA.test(textoOriginal || "") && window.CLIMA.real) {
@@ -117,7 +118,7 @@ window.AP = (function () {
         <img src="img/inia.png" alt="Logo de INIA, Instituto de Investigaciones Agropecuarias">
         <p><strong>${escapar(window.NOMBRE_PROYECTO)}</strong></p>
         <p>Maqueta presentada al Concurso Nacional Ciencia Pública – Dispositivos 2027. Postulación de INIA con CONAF Tarapacá, CONAF Los Ríos y la Universidad de La Serena.</p>
-        <p>Los datos con el sello «Dato de demostración» son ilustrativos. Las cuentas y handles son de ejemplo.</p>
+        <p>Los datos con el sello «Dato de demostración» son ilustrativos. Las cuentas y sus nombres de usuario son de ejemplo.</p>
         ${window.ARBOLES.map(creditoFoto).join("")}
       </div>
     </footer>`;
