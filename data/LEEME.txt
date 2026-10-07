@@ -1,0 +1,6 @@
+cr2met_tmax_diaria.csv: temperatura máxima diaria (°C), 1960-01-01 a 2021-12-31.
+Columnas: fecha, tamarugo, patagua, coigue. Celdas CR2MET (lat, lon): tamarugo (-20.275, -69.675); patagua (-33.575, -70.625); coigue (-39.925, -72.075).
+cr2met_resumen.json: días al año sobre el umbral de cada sitio, por década (1961-2020).
+
+Fuente: Boisier, J. P. (2023). CR2MET: A high-resolution precipitation and temperature dataset for the period 1960-2021 in continental Chile (v2.5). Zenodo. https://doi.org/10.5281/zenodo.7529682
+Licencia: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Datos extraídos sin modificar los valores; solo se seleccionaron las celdas.

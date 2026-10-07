@@ -274,7 +274,7 @@
               <p class="publicacion-dia">${E(p.dia)}</p>
             </div>
           </header>
-          <p class="publicacion-sello">${p.tipo === "cambio" ? AP.selloClima() : AP.selloDemo("Publicación de ejemplo")}</p>
+          <p class="publicacion-sello">${AP.selloPublicacion(p.texto)}</p>
           <p class="publicacion-texto">${E(AP.rellenar(p.texto, arbol.id))}</p>
           <p class="mencion-ia">${E(window.MENCION_IA)}</p>
           <p class="publicacion-enlace"><a href="repositorio.html#${encodeURIComponent(p.tema)}">¿Qué significa?<span class="visualmente-oculto"> ${E(anclaTema(p.tema))}</span></a></p>

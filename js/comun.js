@@ -35,8 +35,8 @@ window.AP = (function () {
       if (!c) return "";
       switch (campo) {
         case "umbral": return c.umbral;
-        case "base": return c.base.dias;
-        case "reciente": return c.reciente.dias;
+        case "base": return Math.round(c.base.dias);
+        case "reciente": return Math.round(c.reciente.dias);
         case "periodoBase": return c.base.periodo;
         case "periodoReciente": return c.reciente.periodo;
       }
@@ -52,6 +52,16 @@ window.AP = (function () {
   // Sello para cifras climáticas: real si CLIMA.real, si no demostración.
   function selloClima() {
     return window.CLIMA.real ? selloReal("Dato real · CR2MET") : selloDemo("Dato de demostración");
+  }
+  // Sello para publicaciones de ejemplo: el texto siempre es de ejemplo; si trae cifras climáticas
+  // y CLIMA es real, se agrega un segundo sello que lo indica.
+  const MARCADOR_CLIMA = /\{(umbral|base|reciente|periodoBase|periodoReciente)(?::\w+)?\}/;
+  function selloPublicacion(textoOriginal) {
+    const ejemplo = selloDemo("Publicación de ejemplo");
+    if (MARCADOR_CLIMA.test(textoOriginal || "") && window.CLIMA.real) {
+      return ejemplo + " " + selloReal("Cifras climáticas reales · CR2MET");
+    }
+    return ejemplo;
   }
 
   function pasoActual() {
@@ -128,7 +138,7 @@ window.AP = (function () {
     document.body.insertAdjacentHTML("beforeend", pie());
   }
 
-  return { arbolPorId, arbolActual, escapar, rellenar, selloDemo, selloReal, selloClima, enlace, creditoFoto, montar };
+  return { arbolPorId, arbolActual, escapar, rellenar, selloDemo, selloReal, selloClima, selloPublicacion, enlace, creditoFoto, montar };
 })();
 
 // Íconos genéricos (no son logos de marcas).

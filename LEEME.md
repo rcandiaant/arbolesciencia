@@ -25,18 +25,30 @@ Las páginas 2 a 5 aceptan `?arbol=tamarugo`, `?arbol=coigue` o `?arbol=patagua`
 Cada dato lleva su sello en el mismo gráfico o tarjeta.
 
 - **«Dato de demostración»:** valores ilustrativos. Son las series de los sensores (los nodos aún no están instalados) y las publicaciones de ejemplo.
-- **«Dato real · CR2MET»:** cifras climáticas extraídas de CR2MET. Aparece solo si `js/clima.js` tiene `real: true`; mientras no haya extracción, el módulo climático muestra valores de demostración.
+- **«Dato real · CR2MET»:** cifras climáticas extraídas de CR2MET v2.5 (módulo «¿Cuántos días como hoy había antes?», tabla del repositorio y cifras dentro de las publicaciones de ejemplo, que llevan además el sello «Publicación de ejemplo»).
 - **Cuentas y handles** (`@tamarugo.pampa`, `@coigue.mocho`, `@patagua.laplatina`): son de ejemplo. Los nombres y la voz definitiva de cada árbol se construyen en talleres de co-diseño.
 - **Panel:** la especificación (atril inclinado, cara de 60 × 40 cm, ACM con estructura de acero galvanizado) está sujeta a validación con CONAF y cotización. La URL corta y el audio son de ejemplo.
 
 ## Método climático
 
-La comparación histórica se calcula **CR2MET contra CR2MET**: días al año con temperatura máxima sobre un umbral del sitio, en la celda más cercana al árbol, período 1961–1990 frente a 2011–2020. El sensor del nodo no se usa para calcular la anomalía; aporta la respuesta del árbol.
+La comparación histórica se calcula **CR2MET contra CR2MET**: días al año con temperatura máxima sobre un umbral del sitio, en la celda de 0,05° más cercana al árbol, período 1961–1990 frente a 2011–2020. El sensor del nodo no se usa para calcular la anomalía; aporta la respuesta del árbol.
+
+- **Umbral:** el percentil 90 de la temperatura máxima diaria de 1961–1990 en cada celda, redondeado.
+- **Décadas:** parten en 1961 (1961–1970 … 2011–2020). La base son las tres primeras y la reciente, la última. CR2MET v2.5 termina en 2021, así que no hay década 2021–2030.
+- **Coigüe:** su ubicación es referencial: la entrada de la reserva (guardería CONAF, acceso por Enco, −39,93856; −72,0976 según OpenStreetMap). El ejemplar se define con CONAF Los Ríos.
+
+| Árbol | Celda CR2MET (lat, lon) | Umbral | 1961–1990 | 2011–2020 |
+|---|---|---|---|---|
+| Tamarugo | −20,275; −69,675 | 33 °C | 30,5 días/año | 58,4 días/año |
+| Patagua | −33,575; −70,625 | 30 °C | 29,4 días/año | 60,6 días/año |
+| Coigüe | −39,925; −72,075 | 20 °C | 35,9 días/año | 48,6 días/año |
+
+La serie diaria usada (`data/cr2met_tmax_diaria.csv`) y el resumen (`data/cr2met_resumen.json`) se publican con el sitio y se pueden descargar desde el repositorio de contenidos.
 
 ## Fuentes
 
 - Garrido M. et al. (2020). *The adjustment of Prosopis tamarugo hydraulic architecture traits has a homeostatic effect over its performance under descent of phreatic level in the Atacama Desert.* Trees 34:89–99. https://doi.org/10.1007/s00468-019-01899-2
-- Boisier J. P. (2023). CR2MET v2.5. Zenodo. https://doi.org/10.5281/zenodo.7529682
+- Boisier J. P. (2023). CR2MET v2.5. Zenodo. https://doi.org/10.5281/zenodo.7529682 (CC BY 4.0). Extracción de las celdas: 6 de octubre de 2026.
 - Fotos referenciales de cada especie (no son los ejemplares monitoreados), con atribución visible en la maqueta:
   - Tamarugo: Pablo Trincado, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Prosopis_tamarugo.jpg), [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/).
   - Coigüe: Cesar Ormazabal, [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Nothofagus_dombeyi_(Puesco_Bajo,_Araucan%C3%ADa,_Chile).jpg), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), recortada (Puesco Bajo, Araucanía).
@@ -69,7 +81,7 @@ Todas las rutas son relativas, así que también funciona en una subcarpeta de c
 
 ## Pendientes
 
-- Datos reales de CR2MET en `js/clima.js`: hoy son valores de demostración. CR2MET v2.5 está en Zenodo (~6,8 GB de Tmax diaria); se extraen solo las celdas de los tres árboles.
+- Coordenada del ejemplar de coigüe acordada con CONAF Los Ríos (hoy: entrada de la reserva). Si cambia, hay que volver a extraer su celda CR2MET.
 - Fotos de los tres ejemplares monitoreados (hoy hay fotos referenciales de cada especie).
 - Foto del nodo de INIA instalado.
 - Fuente científica del tema "Por qué el tronco se encoge de día".

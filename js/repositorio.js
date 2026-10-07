@@ -2,7 +2,6 @@
 // Requiere js/datos.js, js/clima.js y js/comun.js.
 (function () {
   const esc = AP.escapar;
-  const MARCADOR = /\{(umbral|base|reciente|periodoBase|periodoReciente)(?::\w+)?\}/;
 
   // Fuentes reales permitidas (citadas tal cual).
   const FUENTES = {
@@ -28,7 +27,7 @@
     const p = window.PUBLICACIONES.find(x => x.tema === tema);
     if (!p) { caja.innerHTML = `<p><span class="pendiente">Mensaje de ejemplo pendiente</span></p>`; return; }
     const a = AP.arbolPorId(p.arbol);
-    const sello = MARCADOR.test(p.texto) ? AP.selloClima() : AP.selloDemo("Publicación de ejemplo");
+    const sello = AP.selloPublicacion(p.texto);
     caja.innerHTML = `<figure class="mensaje tono-${esc(a.id)}">
         <figcaption class="mensaje-autor"><strong>${esc(a.comun)}</strong> <span class="handle handle-ejemplo">${esc(a.handle)}</span></figcaption>
         <p class="mensaje-dia">${esc(p.dia)}</p>
@@ -64,7 +63,8 @@
   const filas = window.ARBOLES.map(a => {
     const c = C.arboles[a.id];
     if (!c) return "";
-    return `<tr><th scope="row">${esc(a.comun)}</th><td>${esc(c.umbral)} °C</td><td>${esc(c.base.dias)}</td><td>${esc(c.reciente.dias)}</td></tr>`;
+    const num = v => String(v).replace(".", ",");
+    return `<tr><th scope="row">${esc(a.comun)}</th><td>${esc(c.umbral)} °C</td><td>${esc(num(c.base.dias))}</td><td>${esc(num(c.reciente.dias))}</td></tr>`;
   }).join("");
   const ejB = C.arboles[window.ARBOLES[0].id];
   document.getElementById("tabla-clima").innerHTML = `<div class="tabla-clima">
@@ -77,6 +77,8 @@
         </table>
       </div>
       <p class="nota">${C.real ? "Valores extraídos de CR2MET." : "En esta maqueta las cifras son de demostración; se reemplazarán por los valores extraídos de CR2MET."}</p>
+      ${C.real && C.datos ? `<p class="descarga-datos"><a class="boton secundario" href="${esc(C.datos.url)}" download>Descargar los datos (CSV)</a>
+        <span class="nota">${esc(C.datos.descripcion)} Fuente: ${esc(C.version || "CR2MET")}, licencia <a href="https://creativecommons.org/licenses/by/4.0/" rel="license noopener">${esc(C.licencia || "CC BY 4.0")}</a>.</span></p>` : ""}
     </div>`;
 
   // El contenido se completa con JS y la cabecera se inserta arriba: vuelve al ancla pedida.

@@ -95,6 +95,9 @@
 .origen ul { padding-left: 1.2em; }
 .origen li { margin-bottom: 8px; }
 
+/* Descarga de la serie CR2MET (solo con datos reales) */
+.descarga-datos { display: grid; gap: 6px; margin: 12px 0 0; justify-items: start; }
+
 /* Una sola tarjeta de cápsulas; en cada tema, el nivel 3 enlaza a ella */
 .capsulas-tarjeta { margin: 24px 0; }
 .capsulas-tarjeta .capsula { margin-top: 12px; max-width: 520px; }

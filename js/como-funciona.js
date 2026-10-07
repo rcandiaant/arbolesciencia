@@ -9,7 +9,10 @@
   if (dato) dato.insertAdjacentHTML("afterbegin", AP.selloDemo());
 
   const mensaje = document.getElementById("ej-mensaje");
-  if (mensaje) mensaje.insertAdjacentHTML("afterbegin", AP.selloClima());
+  if (mensaje) {
+    const t1 = window.PUBLICACIONES.find(p => p.id === "t1");
+    mensaje.insertAdjacentHTML("afterbegin", AP.selloPublicacion(t1 ? t1.texto : ""));
+  }
 
   const mencion = document.getElementById("ej-mencion");
   if (mencion) mencion.textContent = window.MENCION_IA;

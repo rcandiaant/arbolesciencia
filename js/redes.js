@@ -5,10 +5,7 @@
   const activo = AP.arbolActual();
   const HILO = window.HILO;
 
-  // ¿El texto original lleva cifras climáticas? (marcadores {umbral}, {base:id}, etc.)
-  const MARCADOR = /\{(umbral|base|reciente|periodoBase|periodoReciente)(?::\w+)?\}/;
-  const tieneCifras = t => MARCADOR.test(t);
-  const sello = t => (tieneCifras(t) ? AP.selloClima() : AP.selloDemo("Publicación de ejemplo"));
+  const sello = t => AP.selloPublicacion(t);
   const texto = (t, arbolId) => esc(AP.rellenar(t, arbolId));
 
   function tema(id) { return window.TEMAS.find(t => t.id === id) || { id: id, titulo: "" }; }
